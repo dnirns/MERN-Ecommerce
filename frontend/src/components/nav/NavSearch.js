@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Container from 'react-bootstrap/Container'
+import Nav from 'react-bootstrap/Nav'
 import Form from 'react-bootstrap/Form'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -20,7 +20,7 @@ const NavSearch = () => {
   })
 
   return (
-    <Container className='d-flex justify-content-center h-100' ref={ref}>
+    <Nav className='my-auto' ref={ref}>
       <Form
         className={
           search === false
@@ -67,7 +67,7 @@ const NavSearch = () => {
           />
         </div>
       </Form>
-    </Container>
+    </Nav>
   )
 }
 

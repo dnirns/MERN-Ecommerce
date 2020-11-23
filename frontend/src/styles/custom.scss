@@ -1,22 +1,23 @@
-
-
 /* make the customizations */
 $theme-colors: (
-    "info": tomato,
-    "danger": teal
+  'info': tomato,
+  'danger': teal,
 );
-
 
 //font color overrides
 $body-color: rgb(52, 52, 52);
 
 
+//LINK OVERRIDES
+$link-color: rgb(88, 179, 199);
+$link-hover-decoration: none;
+// $link-decoration: none !default;
+// $link-hover-color: darken($link-color, 15%) !default;
 
 
+//NAV
 
-
-
-
+$navbar-light-toggler-border-color: rgba(0, 0, 0, 0);
 
 /* import bootstrap to set changes */
-@import "~bootstrap/scss/bootstrap";
+@import '~bootstrap/scss/bootstrap';
