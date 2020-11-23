@@ -27,5 +27,5 @@ yarn-debug.log*
 yarn-error.log*
 
 #data files
-frontend/src/data.js
+# frontend/src/data.js
 

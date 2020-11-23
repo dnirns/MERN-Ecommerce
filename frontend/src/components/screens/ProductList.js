@@ -9,17 +9,17 @@ const ProductList = () => {
         <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
           <Card className='my-3 py-3 rounded'>
             <Link to={`/product/${product._id}`}>
-              <Card.Img src={product.image} variant='top' />
+              <Card.Img src={product.picture} variant='top' />
             </Link>
             <Card.Body>
               <Link to={`/product/${product._id}`}>
                 <Card.Title as='div'>
-                  <strong>{product.name}</strong>
+                  <strong>Product Name: {product.brand}</strong>
                 </Card.Title>
               </Link>
               <Card.Text as='div'>
               </Card.Text>
-              <Card.Text>£{product.price}</Card.Text>
+              <Card.Text>{product.price}</Card.Text>
             </Card.Body>
           </Card>
         </Col>
