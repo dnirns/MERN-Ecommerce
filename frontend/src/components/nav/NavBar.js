@@ -12,8 +12,8 @@ const NavBar = () => {
       expand='md'
       bg='light'
       variant='light'
-      className='px-4'
-    >
+      className='px-4 py-8'
+      fixed='top'  >
       <Navbar.Brand>SHOP</Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-na' />
       <Navbar.Collapse id='responsive-navbar-nav'>
@@ -22,7 +22,7 @@ const NavBar = () => {
             <Link to='/'>Home</Link>
           </Nav.Link>
           <Nav.Link>
-            <Link to='/products'>Shop</Link>
+            <Link to='/products'>Products</Link>
           </Nav.Link>
         </Nav>
 

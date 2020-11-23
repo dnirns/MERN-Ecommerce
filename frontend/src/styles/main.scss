@@ -1,2 +1,6 @@
 @import "custom";
 @import "navbar";
+
+html {
+  min-height: 100vh;
+}
