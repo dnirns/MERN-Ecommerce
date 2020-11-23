@@ -1,0 +1,22 @@
+
+
+/* make the customizations */
+$theme-colors: (
+    "info": tomato,
+    "danger": teal
+);
+
+
+//font color overrides
+$body-color: rgb(52, 52, 52);
+
+
+
+
+
+
+
+
+
+/* import bootstrap to set changes */
+@import "~bootstrap/scss/bootstrap";
