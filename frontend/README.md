@@ -1,1 +1,1 @@
-# MERN (Mongo/Express/React/Node) E-Commerce Project.
+# MERN ((Mongo/Express/React/Node)) E-Commerce Project.
