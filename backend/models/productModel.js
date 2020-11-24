@@ -13,8 +13,6 @@ const productSchema = mongoose.Schema(
     },
     image: {
       type: String,
-      required: true,
-      unique: true,
     },
     description: {
       type: String,
@@ -43,14 +41,14 @@ const productSchema = mongoose.Schema(
     },
     longitude: {
       type: String,
-      required: false
-    }
+      required: false,
+    },
   },
   {
     timestamps: true,
   }
 )
 
-const User = mongoose.model('Product', productSchema)
+const Product = mongoose.model('Product', productSchema)
 
 export default Product
