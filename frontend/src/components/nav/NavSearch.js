@@ -54,17 +54,19 @@ const NavSearch = () => {
               : 'icon-bg'
           }
         >
-          <FontAwesomeIcon
-            onClick={toggle}
-            className={
-              search === true
-                ? 'search-icon fadeOut'
-                : search === false
-                ? 'search-icon fadeIn'
-                : 'search-icon'
-            }
-            icon={faSearch}
-          />
+          {search !== true && (
+            <FontAwesomeIcon
+              onClick={toggle}
+              className={
+                search === true
+                  ? "search-icon fadeOut"
+                  : search === false
+                  ? "search-icon fadeIn"
+                  : "search-icon"
+              }
+              icon={faSearch}
+            />
+          )}
         </div>
       </Form>
     </Nav>
