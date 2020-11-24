@@ -37,10 +37,14 @@ const productSchema = mongoose.Schema(
       type: String,
       required: false,
     },
-    latLng: {
-      type: Array,
+    latitude: {
+      type: String,
       required: false,
     },
+    longitude: {
+      type: String,
+      required: false
+    }
   },
   {
     timestamps: true,
