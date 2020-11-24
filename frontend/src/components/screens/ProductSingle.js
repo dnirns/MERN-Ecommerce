@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import products from '../../data'
 
-const Product = (props) => {
+const ProductSingle = (props) => {
   const [quantity, setQuantity] = useState(0)
   const product = products.find(product => product._id === props.match.params.id)
   console.log(product)
@@ -91,4 +91,4 @@ const Product = (props) => {
   )
 }
 
-export default Product
+export default ProductSingle
