@@ -1,13 +1,17 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import products from'./data/data.js'
+import connectDB from './config/db.js'
 
-
+//? LOAD DOTENV VARIABLES
 dotenv.config()
+
+//? CONNECT TO MONGODB ATLAS
+connectDB()
+
 const app = express()
 
 //? ROUTES
-
 //* HOME ROUTE
 app.get('/', (req, res) => {
   res.send('api running')

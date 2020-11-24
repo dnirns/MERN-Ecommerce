@@ -1,5 +1,16 @@
 # MERN-Ecommerce Project
 
-### React front-end.
+# MERN E-Commerce Site
 
-### Styled with basic bootstrap components for early development - will switch to SASS or TailwindCSS once structure and functionality is complete.
+## Stack / Dependencies:
+
+- React
+- Express
+- MongoDB
+- Mongoose
+- Dotenv
+- Axios
+
+- React Bootstrap
+- Fort Awesome
+- React-Cool-OnClickOutside
