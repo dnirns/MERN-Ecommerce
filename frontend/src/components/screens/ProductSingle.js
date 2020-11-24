@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
-import products from '../../data'
 
 const ProductSingle = (props) => {
+
   const [quantity, setQuantity] = useState(0)
-  const product = products.find(product => product._id === props.match.params.id)
-  console.log(product)
+
+  //? SET PRODUCT OBJECT IN STATE
+  const [product, setProduct] = useState({})
+
+  useEffect(() => {
+    const fetchProducts = async() => {
+      const res = await axios.get(`/api/products/${props.match.params.id}`)
+      setProduct(res.data)
+    }
+    fetchProducts()
+  }, [props.match])
+
 
   return (
     <>
