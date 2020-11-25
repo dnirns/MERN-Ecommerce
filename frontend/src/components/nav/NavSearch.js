@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import Nav from 'react-bootstrap/Nav'
-import Form from 'react-bootstrap/Form'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 

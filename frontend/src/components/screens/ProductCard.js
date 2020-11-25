@@ -1,23 +1,33 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import Card from 'react-bootstrap/Card'
+import { makeStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
+import CardActionArea from '@material-ui/core/CardActionArea'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import CardMedia from '@material-ui/core/CardMedia'
+// import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography'
+// import { Link } from 'react-router-dom'
+
 
 const ProductCard = ({ product }) => {
+
+
   return (
-    <Card className='my-3 rounded'>
-      <Link to={`/product/${product._id}`}>
-        <Card.Img src={product.image} variant='top' className='p-2 rounded' />
-      </Link>
-      <Card.Body>
-        <Link to={`/product/${product._id}`}>
-          <Card.Title as='div'>
-            <strong>{product.brand}</strong>
-            <p>{product.name}</p>
-          </Card.Title>
-        </Link>
-        <Card.Text as='div'></Card.Text>
-        <Card.Text>{product.price}</Card.Text>
-      </Card.Body>
+    <Card>
+      <CardActionArea>
+        <CardMedia
+          component='img'
+          image={product.image}
+          // variant='top'
+
+        />
+        <CardContent>
+          <Typography gutterBottom variant='h4' component='h2'>
+            {product.name}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
     </Card>
   )
 }
