@@ -4,7 +4,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import theme from './theme'
 import Container from '@material-ui/core/Container'
 import Home from './components/screens/Home'
-// import NavBar from './components/nav/NavBar'
+import NavBar from './components/nav/NavBar'
 import ProductList from './components/screens/ProductList'
 import ProductSingle from './components/screens/ProductSingle'
 import Cart from './components/common/Cart'
@@ -14,7 +14,7 @@ import Cart from './components/common/Cart'
 const App = () => {
   return (
     <Router>
-      {/* <NavBar /> */}
+      <NavBar />
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Container maxWidth='lg'>

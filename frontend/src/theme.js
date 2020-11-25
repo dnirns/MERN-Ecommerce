@@ -5,14 +5,14 @@ const theme = createMuiTheme({
     MuiCssBaseline: {
       '@global': {
         html: {
-          margin: '20px',
+
         },
       },
     },
   },
   typography: {
     h2: {
-      color: 'pink',
+      color: 'pink'
     },
   },
 })

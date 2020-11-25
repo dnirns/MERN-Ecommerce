@@ -1,39 +1,139 @@
+import { useState, useRef, useEffect } from 'react'
 
+import {
+  Toolbar,
+  AppBar,
+  Box,
+  Grow,
+  Popper,
+  MenuItem,
+  MenuList,
+  ClickAwayListener,
+  IconButton,
+  Button
+} from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu'
+import { makeStyles } from '@material-ui/core/styles'
 
-import NavSearch from './NavSearch'
 import { Link } from 'react-router-dom'
 
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    marginBottom: '40px'
+  }
+}))
+
+
 const NavBar = () => {
+
+  const [open, setOpen] = useState(false)
+  const anchorRef = useRef(null)
+  const prevOpen = useRef(open)
+
+
+  useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus()
+    }
+
+    prevOpen.current = open
+  }, [open])
+
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen)
+  }
+
+  const handleClose = (e) => {
+    if (anchorRef.current && anchorRef.current.contains(e.target)) {
+      return
+    }
+    setOpen(false)
+  }
+
+  const classes = useStyles()
+
   return (
-    <Navbar
-      collapseOnSelect
-      expand='md'
-      bg='nav-light'
-      variant='nav-light'
-      className='px-4 py-8'
+    <AppBar position='sticky' className={classes.root}>
+      <Toolbar variant='dense'>
+        <Box display={{ xs: 'block', sm: 'none' }}>
+          <div
+            ref={anchorRef}
+            aria-controls={open ? 'menu-list-grow' : undefined}
+            aria-haspopup='true'
+            onClick={handleToggle}
+          >
+            <IconButton
+              edge='start'
+              color='inherit'
+              aria-label='menu'
+            >
+              <MenuIcon fontSize='large' />
+            </IconButton>
+          </div>
 
-      fixed='top'  >
+          <Popper
+            open={open}
+            anchorEl={anchorRef.current}
+            role={undefined}
+            transition
+            disablePortal
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                style={{
+                  transformOrigin:
+                    placement === 'bottom' ? 'center top' : 'center bottom',
+                }}
+              >
+                <div>
+                  <ClickAwayListener onClickAway={handleClose}>
+                    <MenuList autoFocusItem={open} id='menu-list-grow'>
+                      <MenuItem>
+                        <Link
+                          onClick={handleClose}
+                          to='/'
+                        >
+                          HOME
+                        </Link>
+                      </MenuItem>
+                      <MenuItem>
+                        <Link
+                          onClick={handleClose}
+                          to='/'
+                        >
+                          HOME
+                        </Link>
+                      </MenuItem>
+                      <MenuItem>
+                        <Link
+                          onClick={handleClose}
+                          to='/products'
+                        >
+                          PRODUCTS
+                        </Link>
+                      </MenuItem>
 
-      <Navbar.Brand>SHOP</Navbar.Brand>
-      <Navbar.Toggle aria-controls='responsive-navbar-na'/>
-      <Navbar.Collapse id='responsive-navbar-nav'>
-        <Nav className='mr-auto align-items-end px-3'>
-          <Nav.Link>
-            <Link to='/'>Home</Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to='/products'>Products</Link>
-          </Nav.Link>
-        </Nav>
-        <Nav className='ml-auto align-items-end px-3' >
-        <NavSearch />
-          <Nav.Link className='pl-4'>
-            <Link to='/cart'>Cart</Link>
-          </Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+                    </MenuList>
+                  </ClickAwayListener>
+                </div>
+              </Grow>
+            )}
+          </Popper>
+        </Box>
+
+        <Box display={{ xs: 'none', sm: 'block' }}>
+                <Button>
+                  <Link to='/'>HOME</Link>
+                </Button>
+                <Button>
+                  <Link to='/products'>PRODUCTS</Link>
+                </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
   )
 }
 export default NavBar
