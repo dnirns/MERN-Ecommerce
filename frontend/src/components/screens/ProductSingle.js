@@ -24,13 +24,14 @@ import Error from '../common/Error'
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: '10px',
+    minWidth: '180px'
   },
   button: {
     display: 'block',
     marginTop: theme.spacing(2),
   },
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
     minWidth: 120,
   },
 }))
@@ -67,25 +68,14 @@ const ProductSingle = (props) => {
         <Error />
       ) : (
         <Grid container justify='center'>
-          <Grid item md={4}>
+          <Grid item xs={10} md={4}>
             <Card variant='outlinded' p={2}>
               <CardActionArea>
                 <CardMedia component='img' image={product.image} />
-                <CardContent>
-                  <Typography gutterBottom variant='h4' component='h2'>
-                    {product.name}
-                  </Typography>
-                  <Typography variant='body' component='p'>
-                    Category: {product.category}
-                  </Typography>
-                  <Typography gutterBottom variant='body' component='p'>
-                    £{product.price}
-                  </Typography>
-                </CardContent>
               </CardActionArea>
             </Card>
           </Grid>
-          <Grid item md={3}>
+          <Grid item xs={10} md={3}>
             <List>
               <ListItem>
                 <Typography variant='h4' component='h2'>
@@ -107,8 +97,8 @@ const ProductSingle = (props) => {
               </ListItem>
             </List>
           </Grid>
-          <Grid item md={3}>
-            <Card container className={classes.root}>
+          <Grid item xs={10} md={2}>
+            <Card className={classes.root}>
               <CardContent>
                 <List>
                   <ListItem>
@@ -136,7 +126,7 @@ const ProductSingle = (props) => {
                         value={quantity}
                         onChange={(e) => setQuantity(e.target.value)}
                       >
-                        <MenuItem value=''></MenuItem>
+                        <MenuItem value={0} >0</MenuItem>
                         {[...Array(product.stock).keys()].map((x) => (
                           <MenuItem key={x + 1} value={x + 1}>
                             {x + 1}
