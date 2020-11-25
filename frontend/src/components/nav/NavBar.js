@@ -10,27 +10,27 @@ import {
   MenuList,
   ClickAwayListener,
   IconButton,
-  Button
+  Button,
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { Link } from 'react-router-dom'
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: '40px'
-  }
+    marginBottom: '40px',
+  },
+  icon: {
+    marginLeft: 'auto',
+  },
 }))
 
-
 const NavBar = () => {
-
   const [open, setOpen] = useState(false)
   const anchorRef = useRef(null)
   const prevOpen = useRef(open)
-
 
   useEffect(() => {
     if (prevOpen.current === true && open === false) {
@@ -39,7 +39,6 @@ const NavBar = () => {
 
     prevOpen.current = open
   }, [open])
-
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen)
@@ -64,11 +63,7 @@ const NavBar = () => {
             aria-haspopup='true'
             onClick={handleToggle}
           >
-            <IconButton
-              edge='start'
-              color='inherit'
-              aria-label='menu'
-            >
+            <IconButton edge='start' color='inherit' aria-label='menu'>
               <MenuIcon fontSize='large' />
             </IconButton>
           </div>
@@ -92,30 +87,20 @@ const NavBar = () => {
                   <ClickAwayListener onClickAway={handleClose}>
                     <MenuList autoFocusItem={open} id='menu-list-grow'>
                       <MenuItem>
-                        <Link
-                          onClick={handleClose}
-                          to='/'
-                        >
+                        <Link onClick={handleClose} to='/'>
                           HOME
                         </Link>
                       </MenuItem>
                       <MenuItem>
-                        <Link
-                          onClick={handleClose}
-                          to='/'
-                        >
+                        <Link onClick={handleClose} to='/'>
                           HOME
                         </Link>
                       </MenuItem>
                       <MenuItem>
-                        <Link
-                          onClick={handleClose}
-                          to='/products'
-                        >
+                        <Link onClick={handleClose} to='/products'>
                           PRODUCTS
                         </Link>
                       </MenuItem>
-
                     </MenuList>
                   </ClickAwayListener>
                 </div>
@@ -125,12 +110,18 @@ const NavBar = () => {
         </Box>
 
         <Box display={{ xs: 'none', sm: 'block' }}>
-                <Button>
-                  <Link to='/'>HOME</Link>
-                </Button>
-                <Button>
-                  <Link to='/products'>PRODUCTS</Link>
-                </Button>
+          <Button>
+            <Link to='/'>HOME</Link>
+          </Button>
+          <Button>
+            <Link to='/products'>PRODUCTS</Link>
+          </Button>
+        </Box>
+
+        <Box className={classes.icon}>
+          <Link to='/cart'>
+            <ShoppingCartIcon />
+          </Link>
         </Box>
       </Toolbar>
     </AppBar>

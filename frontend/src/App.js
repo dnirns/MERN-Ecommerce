@@ -7,7 +7,7 @@ import Home from './components/screens/Home'
 import NavBar from './components/nav/NavBar'
 import ProductList from './components/screens/ProductList'
 import ProductSingle from './components/screens/ProductSingle'
-import Cart from './components/common/Cart'
+import Cart from './components/screens/Cart'
 
 
 

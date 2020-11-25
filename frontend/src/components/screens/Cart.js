@@ -1,9 +1,10 @@
 import React from 'react'
+import Typography from '@material-ui/core/Typography'
 
 const Cart = () => {
   return (
     <div>
-      <h3>Cart</h3>
+      <Typography variant='h2'>Cart</Typography>
     </div>
   )
 }

@@ -49,12 +49,16 @@ const ProductSingle = (props) => {
     dispatch(listProductDetails(props.match.params.id))
   }, [dispatch, props.match])
 
-  const handleClose = () => {
+  const handleCloseQty = () => {
     setOpen(false)
   }
 
-  const handleOpen = () => {
+  const handleOpenQty = () => {
     setOpen(true)
+  }
+
+  const addCartHandler = () => {
+    props.history.push(`/cart/${props.match.params.id}?qty=${quantity}`)
   }
 
   const classes = useStyles()
@@ -121,8 +125,8 @@ const ProductSingle = (props) => {
                         labelId='demo-controlled-open-select-label'
                         id='demo-controlled-open-select'
                         open={open}
-                        onClose={handleClose}
-                        onOpen={handleOpen}
+                        onClose={handleCloseQty}
+                        onOpen={handleOpenQty}
                         value={quantity}
                         onChange={(e) => setQuantity(e.target.value)}
                       >
@@ -151,7 +155,7 @@ const ProductSingle = (props) => {
                         Add to cart
                       </Button>
                     ) : (
-                      <Button variant='outlined' color='primary'>
+                      <Button variant='outlined' color='primary' onClick={addCartHandler}>
                         Add to cart
                       </Button>
                     )}
