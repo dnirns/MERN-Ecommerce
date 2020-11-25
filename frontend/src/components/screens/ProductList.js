@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
 import ProductCard from './ProductCard'
+import { listProducts } from '../../actions/productActions'
+import Spinner from '../common/Spinner'
+import Error from '../common/Error'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,31 +19,32 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const ProductList = () => {
-  //? Setting state
-  const [products, setProducts] = useState([])
+  const dispatch = useDispatch()
 
-  //? useEffect to make axios request on load
+  const productList = useSelector((state) => state.productList)
+  const { loading, error, products } = productList
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      const res = await axios.get('/api/products')
-      setProducts(res.data)
-    }
-    fetchProducts()
-  }, [])
+    dispatch(listProducts())
+  }, [dispatch])
 
   const classes = useStyles()
 
   return (
     <div className={classes.root}>
-      <Grid container justify='center' spacing={3}>
-        {products.map((product) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={product._id}>
-      
+      {loading ? (
+        <Spinner />
+      ) : error ? (
+        <Error>{error}</Error>
+      ) : (
+        <Grid container justify='center' spacing={3}>
+          {products.map((product) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={product._id}>
               <ProductCard product={product} />
-
-          </Grid>
-        ))}
-      </Grid>
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </div>
   )
 }
