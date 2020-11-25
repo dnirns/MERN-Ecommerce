@@ -33,14 +33,12 @@ const ProductList = () => {
 
   return (
     <div className={classes.root}>
-      <Grid
-        container
-        justify='center'
-        spacing={3}
-      >
+      <Grid container justify='center' spacing={3}>
         {products.map((product) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={product._id}>
+      
               <ProductCard product={product} />
+
           </Grid>
         ))}
       </Grid>
