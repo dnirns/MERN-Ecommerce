@@ -36,9 +36,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ProductSingle = (props) => {
-  const [quantity, setQuantity] = useState(0)
+const ProductSingle = ({ match, history}) => {
+
   const [open, setOpen] = useState(false)
+
+  const [qty, setQty] = useState(1)
 
   const dispatch = useDispatch()
 
@@ -46,8 +48,14 @@ const ProductSingle = (props) => {
   const { loading, error, product } = productDetails
 
   useEffect(() => {
-    dispatch(listProductDetails(props.match.params.id))
-  }, [dispatch, props.match])
+    dispatch(listProductDetails(match.params.id))
+  }, [dispatch, match])
+
+  const addToCartHandler = () => {
+    history.push(`/cart/${match.params.id}?qty=${qty}`)
+  }
+
+
 
   const handleCloseQty = () => {
     setOpen(false)
@@ -55,10 +63,6 @@ const ProductSingle = (props) => {
 
   const handleOpenQty = () => {
     setOpen(true)
-  }
-
-  const addCartHandler = () => {
-    props.history.push(`/cart/${props.match.params.id}?qty=${quantity}`)
   }
 
   const classes = useStyles()
@@ -127,12 +131,11 @@ const ProductSingle = (props) => {
                         open={open}
                         onClose={handleCloseQty}
                         onOpen={handleOpenQty}
-                        value={quantity}
-                        onChange={(e) => setQuantity(e.target.value)}
+                        value={qty}
                       >
-                        <MenuItem value={0} >0</MenuItem>
+                        <MenuItem value={0}>0</MenuItem>
                         {[...Array(product.stock).keys()].map((x) => (
-                          <MenuItem key={x + 1} value={x + 1}>
+                          <MenuItem key={x + 1} value={x + 1} onClick={() => setQty(x + 1)}>
                             {x + 1}
                           </MenuItem>
                         ))}
@@ -155,7 +158,7 @@ const ProductSingle = (props) => {
                         Add to cart
                       </Button>
                     ) : (
-                      <Button variant='outlined' color='primary' onClick={addCartHandler}>
+                      <Button variant='outlined' color='primary' onClick={addToCartHandler}>
                         Add to cart
                       </Button>
                     )}

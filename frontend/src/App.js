@@ -21,8 +21,7 @@ const App = () => {
           <Route path='/' component={Home} exact />
           <Route path='/products' component={ProductList} />
           <Route path='/product/:id' component={ProductSingle} />
-          <Route path='/product/cart/:id?' component={Cart} />
-          <Route path='/cart' component={Cart} />
+          <Route path='/cart/:id?' component={Cart} />
         </Container>
       </ThemeProvider>
     </Router>
