@@ -8,6 +8,7 @@ import NavBar from './components/nav/NavBar'
 import ProductList from './components/screens/ProductList'
 import ProductSingle from './components/screens/ProductSingle'
 import Cart from './components/screens/Cart'
+import Shipping from './components/screens/Shipping'
 
 
 
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/products' component={ProductList} />
           <Route path='/product/:id' component={ProductSingle} />
           <Route path='/cart/:id?' component={Cart} />
+          <Route path='/shipping' component={Shipping} />
         </Container>
       </ThemeProvider>
     </Router>

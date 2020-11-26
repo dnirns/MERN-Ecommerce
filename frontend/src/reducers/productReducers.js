@@ -7,9 +7,7 @@ import {
   PRODUCT_DETAILS_FAIL,
 } from '../constants/productConstants'
 
-
 export const productListReducer = (state = { products: [] }, action) => {
-
   switch (action.type) {
     case PRODUCT_LIST_REQUEST:
       return { loading: true, products: [] }
@@ -21,10 +19,7 @@ export const productListReducer = (state = { products: [] }, action) => {
       return state
   }
 }
-export const productDetailsReducer = (
-  state = { product: {} },
-  action
-) => {
+export const productDetailsReducer = (state = { product: {} }, action) => {
   switch (action.type) {
     case PRODUCT_DETAILS_REQUEST:
       return { loading: true, ...state }
@@ -36,3 +31,4 @@ export const productDetailsReducer = (
       return state
   }
 }
+
