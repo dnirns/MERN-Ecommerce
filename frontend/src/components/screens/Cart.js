@@ -3,39 +3,36 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import Error from '../common/Error'
 import {
-  Card,
-  CardActionArea,
-  CardMedia,
-  CardContent,
   MenuItem,
   FormControl,
   Select,
   Button,
-  InputLabel,
   Grid,
-  Paper,
   List,
   ListItem,
-  ListItemAvatar,
   ListItemText,
   ListItemSecondaryAction,
-  Avatar,
   IconButton,
   Typography,
+  Divider,
 } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete'
 import { makeStyles } from '@material-ui/core/styles'
-import { addToCart } from '../../actions/cartActions'
+import { addToCart, removeFromCart } from '../../actions/cartActions'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     textAlign: 'center',
   },
-  items: {
+  box: {
     padding: theme.spacing(2),
+    margin: theme.spacing(3),
     textAlign: 'center',
     border: '3px solid black',
+  },
+  cartItem: {
+    padding: theme.spacing(1),
   },
 }))
 
@@ -52,9 +49,25 @@ const Cart = ({ match, location, history }) => {
     }
   }, [dispatch, productId, qty])
 
+  //? event handlers
+  const removeItem = (id) => {
+    dispatch(removeFromCart(id))
+  }
 
+  const checkOut = () => {
+    history.push('/shipping')
+  }
 
-
+  const totalItems = cartItems.reduce(
+    (accumilator, item) => accumilator + item.qty,
+    0
+  )
+  const subTotal = cartItems.reduce(
+    (accumilator, item) => accumilator + item.qty * item.price,
+    0
+  )
+  const tax = subTotal * 0.2
+  const totalWithTax = subTotal + tax
 
   const classes = useStyles()
 
@@ -63,58 +76,83 @@ const Cart = ({ match, location, history }) => {
       <Typography variant='h2'>Cart</Typography>
       <Grid container direction='row' justify='center' alignItems='flex-start'>
         <Grid item>
-          <div className={classes.items}>
+          <div className={classes.box}>
             <Typography variant='body1'>Cart:</Typography>
 
-
-
-
-
-
-
-              <List>
-                {cartItems.map((item) => (
+            <List>
+              {cartItems.map((item) => (
+                <>
                   <ListItem key={item.product}>
-                    <ListItemText primary={item.name.toUpperCase()} />
+                    <ListItemText
+                      className={classes.cartItem}
+                      primary={item.name.toUpperCase()}
+                    />
                     <div>
-                    <FormControl className={classes.formControl}>
-                      <InputLabel>
-                        Select Quantity
-                      </InputLabel>
-                      <Select
-                        // open={open}
-                        // onClose={handleCloseQty}
-                        // onOpen={handleOpenQty}
-                        onChange={(e) => dispatch(addToCart(item.product, parseInt(e.target.value)))}
-                        value={item.qty}
-                      >
-
-                        {[...Array(item.countInStock).keys()].map((x) => (
-                          <MenuItem key={x + 1} value={x + 1}>
-                            {x + 1}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </div>
+                      <FormControl className={classes.cartItem}>
+                        <Select
+                          // open={open}
+                          // onClose={handleCloseQty}
+                          // onOpen={handleOpenQty}
+                          onChange={(e) =>
+                            dispatch(
+                              addToCart(item.product, parseInt(e.target.value))
+                            )
+                          }
+                          value={item.qty}
+                        >
+                          {[...Array(item.countInStock).keys()].map((x) => (
+                            <MenuItem key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </div>
                     <br />
                     <ListItemText
-                      secondary={`Total price: £${item.price * item.qty}`}
+                      className={classes.cartItem}
+                      secondary={`Price: £${parseInt(item.price * item.qty)}`}
                     />
                     <ListItemSecondaryAction>
-                      <IconButton edge='end' aria-label='delete'>
+                      <IconButton
+                        edge='end'
+                        aria-label='delete'
+                        onClick={() => removeItem(item.product)}
+                      >
                         <DeleteIcon />
                       </IconButton>
                     </ListItemSecondaryAction>
                   </ListItem>
-                ))}
-              </List>
-
-
-
-
-
+                  <Divider variant='middle' />
+                </>
+              ))}
+            </List>
           </div>
+        </Grid>
+
+        <Grid item className={classes.box}>
+          <ListItem>
+            <Typography variant='body1'>{`Sub Total: ${subTotal}`}</Typography>
+          </ListItem>
+          <ListItem>
+            <Typography variant='body1'>{`VAT @ 20%: ${tax}`}</Typography>
+          </ListItem>
+          <ListItem>
+            <Typography variant='body1'>
+              <strong>{`Total: ${totalWithTax}`}</strong>
+            </Typography>
+          </ListItem>
+          <ListItem>
+            {cartItems.qty === 0 ? (
+              <Button variant='outlined' disabled>
+                Add to cart
+              </Button>
+            ) : (
+              <Button variant='outlined' color='primary' onClick={checkOut}>
+                DISABLE later Check Out
+              </Button>
+            )}
+          </ListItem>
         </Grid>
       </Grid>
     </container>
