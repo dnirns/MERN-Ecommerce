@@ -10,6 +10,7 @@ import {
   Button,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
+import Breadcrumbs from '../common/Breadcrumbs'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +39,8 @@ const Shipping = ({ history }) => {
 
   const classes = useStyles()
   return (
+    <>
+    <Breadcrumbs cart shipping current/>
     <Grid container direction='row' justify='center' alignItems='center'>
       <Card p={2}>
         <CardContent>
@@ -85,12 +88,13 @@ const Shipping = ({ history }) => {
               color='primary'
               onClick={sumbitAddressHandler}
             >
-              Submit
+              Continue to payment
             </Button>
           </form>
         </CardContent>
       </Card>
     </Grid>
+    </>
   )
 }
 

@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductSingle = ({ match, history}) => {
 
-  const [open, setOpen] = useState(false)
+  // const [open, setOpen] = useState(false)
 
   const [qty, setQty] = useState(1)
 
@@ -57,13 +57,13 @@ const ProductSingle = ({ match, history}) => {
 
 
 
-  const handleCloseQty = () => {
-    setOpen(false)
-  }
+  // const handleCloseQty = () => {
+  //   setOpen(false)
+  // }
 
-  const handleOpenQty = () => {
-    setOpen(true)
-  }
+  // const handleOpenQty = () => {
+  //   setOpen(true)
+  // }
 
   const classes = useStyles()
 
@@ -126,10 +126,6 @@ const ProductSingle = ({ match, history}) => {
                         Select Quantity
                       </InputLabel>
                       <Select
-
-                        open={open}
-                        onClose={handleCloseQty}
-                        onOpen={handleOpenQty}
                         value={qty}
                       >
                         <MenuItem value={0}>0</MenuItem>

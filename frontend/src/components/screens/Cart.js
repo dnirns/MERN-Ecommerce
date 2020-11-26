@@ -17,6 +17,7 @@ import {
 import DeleteIcon from '@material-ui/icons/Delete'
 import { makeStyles } from '@material-ui/core/styles'
 import { addToCart, removeFromCart } from '../../actions/cartActions'
+import Breadcrumbs from '../common/Breadcrumbs'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -71,6 +72,7 @@ const Cart = ({ match, location, history }) => {
 
   return (
     <container className={classes.root}>
+      <Breadcrumbs cart />
       <Typography variant='h2'>Cart</Typography>
       <Grid container direction='row' justify='center' alignItems='flex-start'>
         <Grid item>
@@ -88,9 +90,6 @@ const Cart = ({ match, location, history }) => {
                     <div>
                       <FormControl className={classes.cartItem}>
                         <Select
-                          // open={open}
-                          // onClose={handleCloseQty}
-                          // onOpen={handleOpenQty}
                           onChange={(e) =>
                             dispatch(
                               addToCart(item.product, parseInt(e.target.value))
