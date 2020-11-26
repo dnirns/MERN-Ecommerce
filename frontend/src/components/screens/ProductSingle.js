@@ -122,12 +122,11 @@ const ProductSingle = ({ match, history}) => {
 
                   <div>
                     <FormControl className={classes.formControl}>
-                      <InputLabel id='demo-controlled-open-select-label'>
+                      <InputLabel>
                         Select Quantity
                       </InputLabel>
                       <Select
-                        labelId='demo-controlled-open-select-label'
-                        id='demo-controlled-open-select'
+
                         open={open}
                         onClose={handleCloseQty}
                         onOpen={handleOpenQty}

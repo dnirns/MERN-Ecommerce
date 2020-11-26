@@ -12,7 +12,7 @@ const theme = createMuiTheme({
   },
   typography: {
     h2: {
-      color: 'pink'
+      // color: 'pink'
     },
   },
 })

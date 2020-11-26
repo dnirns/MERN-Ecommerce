@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
-import theme from './theme'
+import theme from './Theme'
 import Container from '@material-ui/core/Container'
 import Home from './components/screens/Home'
 import NavBar from './components/nav/NavBar'
