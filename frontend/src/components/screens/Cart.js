@@ -41,12 +41,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Cart = ({ match, location, history }) => {
   const productId = match.params.id
-
   const qty = location.search ? Number(location.search.split('=')[1]) : 1
-  console.log(match)
-
   const dispatch = useDispatch()
-
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
 
@@ -56,7 +52,12 @@ const Cart = ({ match, location, history }) => {
     }
   }, [dispatch, productId, qty])
 
+
+
+
+
   const classes = useStyles()
+
   return (
     <container className={classes.root}>
       <Typography variant='h2'>Cart</Typography>
@@ -65,7 +66,12 @@ const Cart = ({ match, location, history }) => {
           <div className={classes.items}>
             <Typography variant='body1'>Cart:</Typography>
 
-            <>
+
+
+
+
+
+
               <List>
                 {cartItems.map((item) => (
                   <ListItem key={item.product}>
@@ -79,10 +85,11 @@ const Cart = ({ match, location, history }) => {
                         // open={open}
                         // onClose={handleCloseQty}
                         // onOpen={handleOpenQty}
+                        onChange={(e) => dispatch(addToCart(item.product, parseInt(e.target.value)))}
                         value={item.qty}
                       >
 
-                        {[...Array(item.qty).keys()].map((x) => (
+                        {[...Array(item.countInStock).keys()].map((x) => (
                           <MenuItem key={x + 1} value={x + 1}>
                             {x + 1}
                           </MenuItem>
@@ -102,7 +109,11 @@ const Cart = ({ match, location, history }) => {
                   </ListItem>
                 ))}
               </List>
-            </>
+
+
+
+
+
           </div>
         </Grid>
       </Grid>
