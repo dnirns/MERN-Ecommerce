@@ -24,7 +24,7 @@ import Error from '../common/Error'
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: '10px',
-    minWidth: '180px'
+    minWidth: '180px',
   },
   button: {
     display: 'block',
@@ -36,14 +36,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ProductSingle = ({ match, history}) => {
-
-  // const [open, setOpen] = useState(false)
-
+const ProductSingle = ({ match, history }) => {
   const [qty, setQty] = useState(1)
-
   const dispatch = useDispatch()
-
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
 
@@ -55,21 +50,14 @@ const ProductSingle = ({ match, history}) => {
     history.push(`/cart/${match.params.id}?qty=${qty}`)
   }
 
-
-
-  // const handleCloseQty = () => {
-  //   setOpen(false)
-  // }
-
-  // const handleOpenQty = () => {
-  //   setOpen(true)
-  // }
-
   const classes = useStyles()
 
   return (
     <>
-      <Link to='/'>Back</Link>
+      <Link to='/products'>
+        <Button variant='contained' color='primary'>Back</Button>
+      </Link>
+
       {loading ? (
         <Spinner />
       ) : error ? (
@@ -122,15 +110,15 @@ const ProductSingle = ({ match, history}) => {
 
                   <div>
                     <FormControl className={classes.formControl}>
-                      <InputLabel>
-                        Select Quantity
-                      </InputLabel>
-                      <Select
-                        value={qty}
-                      >
+                      <InputLabel>Select Quantity</InputLabel>
+                      <Select value={qty}>
                         <MenuItem value={0}>0</MenuItem>
                         {[...Array(product.stock).keys()].map((x) => (
-                          <MenuItem key={x + 1} value={x + 1} onClick={() => setQty(x + 1)}>
+                          <MenuItem
+                            key={x + 1}
+                            value={x + 1}
+                            onClick={() => setQty(x + 1)}
+                          >
                             {x + 1}
                           </MenuItem>
                         ))}
@@ -153,7 +141,7 @@ const ProductSingle = ({ match, history}) => {
                         Add to cart
                       </Button>
                     ) : (
-                      <Button variant='outlined' color='primary' onClick={addToCartHandler}>
+                      <Button variant='contained' color='primary' onClick={addToCartHandler}>
                         Add to cart
                       </Button>
                     )}

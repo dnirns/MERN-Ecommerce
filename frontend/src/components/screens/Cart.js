@@ -140,13 +140,13 @@ const Cart = ({ match, location, history }) => {
             </Typography>
           </ListItem>
           <ListItem>
-            {cartItems.qty === 0 ? (
+            {totalItems === 0 ? (
               <Button variant='outlined' disabled>
                 Add to cart
               </Button>
             ) : (
-              <Button variant='outlined' color='primary' onClick={checkOut}>
-                DISABLE later Check Out
+              <Button variant='contained' color='primary' onClick={checkOut}>
+                Checkout...
               </Button>
             )}
           </ListItem>

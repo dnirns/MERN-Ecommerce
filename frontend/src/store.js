@@ -6,11 +6,13 @@ import {
   productDetailsReducer,
 } from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducer'
+import { navReducer } from './reducers/navReducer'
 
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
+  nav: navReducer
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')

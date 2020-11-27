@@ -1,22 +1,20 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { openDrawer, closeDrawer } from '../../actions/navActions'
 
 import {
   Toolbar,
   AppBar,
   Box,
-  Grow,
-  Popper,
-  MenuItem,
-  MenuList,
-  ClickAwayListener,
   IconButton,
-  Button,
 } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import { makeStyles } from '@material-ui/core/styles'
-
 import { Link } from 'react-router-dom'
+
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,101 +23,54 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     marginLeft: 'auto',
   },
+  menuLink: {
+    color: 'white',
+    padding: '0px 10px',
+  },
 }))
 
 const NavBar = () => {
-  const [open, setOpen] = useState(false)
-  const anchorRef = useRef(null)
-  const prevOpen = useRef(open)
 
-  useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus()
-    }
+  const dispatch = useDispatch()
 
-    prevOpen.current = open
-  }, [open])
-
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen)
+  const handleOpenDrawer = () => {
+    dispatch(openDrawer)
   }
-
-  const handleClose = (e) => {
-    if (anchorRef.current && anchorRef.current.contains(e.target)) {
-      return
-    }
-    setOpen(false)
+  const handleCloseDrawer = () => {
+    dispatch(closeDrawer)
   }
 
   const classes = useStyles()
 
   return (
-    <AppBar position='sticky' className={classes.root}>
+    <AppBar
+      position='sticky'
+      className={classes.root}
+      style={{ backgroundColor: '#1b1b1b' }}
+    >
       <Toolbar variant='dense'>
-        <Box display={{ xs: 'block', sm: 'none' }}>
+        <Box display={{ sm: 'block', md: 'none' }}>
           <div
-            ref={anchorRef}
-            aria-controls={open ? 'menu-list-grow' : undefined}
             aria-haspopup='true'
-            onClick={handleToggle}
+            onClick={handleOpenDrawer}
           >
             <IconButton edge='start' color='inherit' aria-label='menu'>
               <MenuIcon fontSize='large' />
             </IconButton>
           </div>
-
-          <Popper
-            open={open}
-            anchorEl={anchorRef.current}
-            role={undefined}
-            transition
-            disablePortal
-          >
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                style={{
-                  transformOrigin:
-                    placement === 'bottom' ? 'center top' : 'center bottom',
-                }}
-              >
-                <div>
-                  <ClickAwayListener onClickAway={handleClose}>
-                    <MenuList autoFocusItem={open} id='menu-list-grow'>
-                      <MenuItem>
-                        <Link onClick={handleClose} to='/'>
-                          HOME
-                        </Link>
-                      </MenuItem>
-                      <MenuItem>
-                        <Link onClick={handleClose} to='/'>
-                          HOME
-                        </Link>
-                      </MenuItem>
-                      <MenuItem>
-                        <Link onClick={handleClose} to='/products'>
-                          PRODUCTS
-                        </Link>
-                      </MenuItem>
-                    </MenuList>
-                  </ClickAwayListener>
-                </div>
-              </Grow>
-            )}
-          </Popper>
         </Box>
+        <Box display={{ sm: 'none', md: 'block' }}>
+          <Link className={classes.menuLink} to='/'>
+            HOME
+          </Link>
+          <Link className={classes.menuLink} to='/products'>
+            PRODUCTS
+          </Link>
 
-        <Box display={{ xs: 'none', sm: 'block' }}>
-          <Button>
-            <Link to='/'>HOME</Link>
-          </Button>
-          <Button>
-            <Link to='/products'>PRODUCTS</Link>
-          </Button>
         </Box>
 
         <Box className={classes.icon}>
-          <Link to='/cart'>
+          <Link to='/cart' className={classes.menuLink}>
             <ShoppingCartIcon />
           </Link>
         </Box>
