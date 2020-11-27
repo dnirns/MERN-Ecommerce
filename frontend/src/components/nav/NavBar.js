@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { openDrawer, closeDrawer } from '../../actions/navActions'
+import { useDispatch } from 'react-redux'
+import { openDrawer } from '../../actions/navActions'
 
 import {
   Toolbar,
@@ -12,7 +11,6 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
-
 
 
 
@@ -36,9 +34,6 @@ const NavBar = () => {
   const handleOpenDrawer = () => {
     dispatch(openDrawer)
   }
-  const handleCloseDrawer = () => {
-    dispatch(closeDrawer)
-  }
 
   const classes = useStyles()
 
@@ -59,7 +54,7 @@ const NavBar = () => {
             </IconButton>
           </div>
         </Box>
-        <Box display={{ sm: 'none', md: 'block' }}>
+        <Box display={{ xs: 'none', sm: 'none', md: 'block' }}>
           <Link className={classes.menuLink} to='/'>
             HOME
           </Link>
