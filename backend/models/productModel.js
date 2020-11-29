@@ -31,18 +31,6 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
-    origin: {
-      type: String,
-      required: false,
-    },
-    latitude: {
-      type: String,
-      required: false,
-    },
-    longitude: {
-      type: String,
-      required: false,
-    },
   },
   {
     timestamps: true,

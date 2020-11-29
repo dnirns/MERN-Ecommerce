@@ -1,45 +1,40 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
-import CardActionArea from '@material-ui/core/CardActionArea'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-
 import Typography from '@material-ui/core/Typography'
 import { Link } from 'react-router-dom'
+import Box from '@material-ui/core/Box'
 
 const useStyles = makeStyles((theme) => ({
   img: {
-    padding: '10px',
+    // padding: '0px 10px',
   },
 }))
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, info }) => {
   const classes = useStyles()
 
   return (
-    <Link to={`/product/${product._id}`}>
-      <Card variant='outlinded' p={2}>
-        <CardActionArea>
+    <Box textAlign='center'>
+      <div>
+        <Link to={`/product/${product._id}`}>
           <CardMedia
             component='img'
             image={product.image}
             className={classes.img}
           />
+        </Link>
+
+        {info && (
           <CardContent>
-            <Typography gutterBottom variant='h4' component='h2'>
-              {product.name.toUpperCase()}
-            </Typography>
-            <Typography variant='body' component='p'>
-              Category: {product.category}
-            </Typography>
-            <Typography gutterBottom variant='body' component='p'>
-              £{product.price}
-            </Typography>
+            <Typography variant='body1'>{product.name.toUpperCase()}</Typography>
+            <Typography variant='p'>Category: {product.category}</Typography>
+            <Typography variant='subtitle1'>£{product.price}</Typography>
           </CardContent>
-        </CardActionArea>
-      </Card>
-    </Link>
+        )}
+      </div>
+    </Box>
   )
 }
 

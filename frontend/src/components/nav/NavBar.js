@@ -1,18 +1,13 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { openDrawer } from '../../actions/navActions'
 
-import {
-  Toolbar,
-  AppBar,
-  Box,
-  IconButton,
-} from '@material-ui/core'
+import { Toolbar, AppBar, Box, IconButton } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
+import LocalMallIcon from '@material-ui/icons/LocalMall'
+import Button from '@material-ui/core/Button'
+import Badge from '@material-ui/core/Badge'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from 'react-router-dom'
-
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,18 +18,21 @@ const useStyles = makeStyles((theme) => ({
   },
   menuLink: {
     color: 'white',
-    padding: '0px 10px',
   },
 }))
 
 const NavBar = () => {
-
   const dispatch = useDispatch()
 
   const handleOpenDrawer = () => {
     dispatch(openDrawer)
   }
+  const cart = useSelector((state) => state.cart)
 
+  const totalItems = cart.cartItems.reduce(
+    (accumilator, item) => accumilator + item.qty,
+    0
+  )
   const classes = useStyles()
 
   return (
@@ -45,10 +43,7 @@ const NavBar = () => {
     >
       <Toolbar variant='dense'>
         <Box display={{ sm: 'block', md: 'none' }}>
-          <div
-            aria-haspopup='true'
-            onClick={handleOpenDrawer}
-          >
+          <div aria-haspopup='true' onClick={handleOpenDrawer}>
             <IconButton edge='start' color='inherit' aria-label='menu'>
               <MenuIcon fontSize='large' />
             </IconButton>
@@ -56,17 +51,20 @@ const NavBar = () => {
         </Box>
         <Box display={{ xs: 'none', sm: 'none', md: 'block' }}>
           <Link className={classes.menuLink} to='/'>
-            HOME
+            <Button className={classes.menuLink}>HOME</Button>
           </Link>
           <Link className={classes.menuLink} to='/products'>
-            PRODUCTS
+            <Button className={classes.menuLink}>PRODUCTS</Button>
           </Link>
-
         </Box>
 
         <Box className={classes.icon}>
-          <Link to='/cart' className={classes.menuLink}>
-            <ShoppingCartIcon />
+          <Link to='/cart'>
+            <Button className={classes.menuLink}>
+              <Badge badgeContent={totalItems} color='primary'>
+                <LocalMallIcon />
+              </Badge>
+            </Button>
           </Link>
         </Box>
       </Toolbar>

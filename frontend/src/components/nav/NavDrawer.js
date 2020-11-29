@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import { Link } from 'react-router-dom'
@@ -10,6 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import CloseIcon from '@material-ui/icons/Close'
 import LocalMallIcon from '@material-ui/icons/LocalMall'
 import Button from '@material-ui/core/Button'
+import Badge from '@material-ui/core/Badge'
 
 import { closeDrawer } from '../../actions/navActions'
 
@@ -31,6 +32,13 @@ const useStyles = makeStyles({
 const SideSheet = ({ open }) => {
   const dispatch = useDispatch()
 
+  const cart = useSelector((state) => state.cart)
+
+  const totalItems = cart.cartItems.reduce(
+    (accumilator, item) => accumilator + item.qty,
+    0
+  )
+
   const handleClose = () => {
     dispatch(closeDrawer)
   }
@@ -49,9 +57,11 @@ const SideSheet = ({ open }) => {
           </Button>
           <Divider orientation='vertical' flexItem />
           <Box className={classes.cartBox}>
-          <Link to='/cart'>
+            <Link to='/cart'>
               <Button onClick={handleClose}>
-                <LocalMallIcon/>
+                <Badge badgeContent={totalItems} color='primary'>
+                  <LocalMallIcon />
+                </Badge>
               </Button>
             </Link>
           </Box>
@@ -59,7 +69,7 @@ const SideSheet = ({ open }) => {
         <Divider />
         <List className={classes.list} onClick={handleClose}>
           <ListItem>
-          <Link to='/'>
+            <Link to='/'>
               <Button>
                 <ListItemText primary='Home' />
               </Button>

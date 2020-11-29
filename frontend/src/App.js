@@ -11,22 +11,23 @@ import Cart from './components/screens/Cart'
 import Shipping from './components/screens/Shipping'
 import Payment from './components/screens/Payment'
 import NavDrawer from './components/nav/NavDrawer'
+import Popup from './components/common/Popup'
 
 import { useSelector } from 'react-redux'
 
 const App = () => {
-
-
   const nav = useSelector((state) => state.nav.navOpen)
-
+  const popup = useSelector((state) => state.popup.popupOpen)
 
   return (
     <Router>
-      <NavBar/>
-      <NavDrawer open={nav}/>
+      <NavBar />
+      <NavDrawer open={nav} />
+
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Container maxWidth='lg'>
+          <Popup open={popup} />
           <Route path='/' component={Home} exact />
           <Route path='/products' component={ProductList} />
           <Route path='/product/:id' component={ProductSingle} />

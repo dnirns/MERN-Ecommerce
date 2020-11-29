@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProductDetails } from '../../actions/productActions'
+import { openPopup, closePopup } from '../../actions/popupActions'
 import {
-  Card,
   CardActionArea,
   CardMedia,
   CardContent,
@@ -15,11 +15,14 @@ import {
   Grid,
   List,
   ListItem,
+  Container,
+  Box,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Spinner from '../common/Spinner'
 import Error from '../common/Error'
+import Popup from '../common/Popup'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,36 +45,45 @@ const ProductSingle = ({ match, history }) => {
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
 
+
   useEffect(() => {
     dispatch(listProductDetails(match.params.id))
   }, [dispatch, match])
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`)
+    dispatch(openPopup)
+    setTimeout(() => {
+      dispatch(closePopup)
+    }, 5000)
   }
 
   const classes = useStyles()
 
   return (
-    <>
-      <Link to='/products'>
-        <Button variant='contained' color='primary'>Back</Button>
-      </Link>
-
+    <Container>
       {loading ? (
         <Spinner />
       ) : error ? (
         <Error />
       ) : (
-        <Grid container justify='center'>
+        <Grid container spacing={3} justify='center'>
+          <Grid item md={1}>
+            <Link to='/products'>
+              <Button variant='contained' color='primary'>
+                Back
+              </Button>
+            </Link>
+          </Grid>
+
           <Grid item xs={10} md={4}>
-            <Card variant='outlinded' p={2}>
+            <Box variant='outlinded'>
               <CardActionArea>
                 <CardMedia component='img' image={product.image} />
               </CardActionArea>
-            </Card>
+            </Box>
           </Grid>
-          <Grid item xs={10} md={3}>
+          <Grid item xs={10} md={4}>
             <List>
               <ListItem>
                 <Typography variant='h4' component='h2'>
@@ -94,11 +106,11 @@ const ProductSingle = ({ match, history }) => {
             </List>
           </Grid>
           <Grid item xs={10} md={2}>
-            <Card className={classes.root}>
+            <div className={classes.root}>
               <CardContent>
                 <List>
                   <ListItem>
-                    <Typography variant='body'>{product.price}</Typography>
+                    <Typography variant='body'>£{product.price}</Typography>
                   </ListItem>
 
                   <ListItem>
@@ -141,18 +153,23 @@ const ProductSingle = ({ match, history }) => {
                         Add to cart
                       </Button>
                     ) : (
-                      <Button variant='contained' color='primary' onClick={addToCartHandler}>
+                      <Button
+                        variant='contained'
+                        color='primary'
+                        onClick={addToCartHandler}
+                      >
                         Add to cart
                       </Button>
                     )}
                   </ListItem>
                 </List>
               </CardContent>
-            </Card>
+            </div>
           </Grid>
         </Grid>
       )}
-    </>
+
+    </Container>
   )
 }
 

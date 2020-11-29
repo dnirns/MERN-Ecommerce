@@ -3,7 +3,12 @@ import { createMuiTheme } from '@material-ui/core/styles'
 const theme = createMuiTheme({
   overrides: {
     icon: {
-      cursor: 'pointer'
+      cursor: 'pointer',
+    },
+    MuiSnackbarContent: {
+      root: {
+        backgroundColor: '#28a745',
+      },
     },
     MuiCssBaseline: {
       '@global': {

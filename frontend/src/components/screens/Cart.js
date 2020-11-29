@@ -61,6 +61,7 @@ const Cart = ({ match, location, history }) => {
     (accumilator, item) => accumilator + item.qty,
     0
   )
+  
   const subTotal = cartItems.reduce(
     (accumilator, item) => accumilator + item.qty * item.price,
     0
