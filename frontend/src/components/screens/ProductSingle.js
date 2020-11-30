@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProductDetails } from '../../actions/productActions'
+import { addToCart } from '../../actions/cartActions'
 import { openPopup, closePopup } from '../../actions/popupActions'
 import {
   CardActionArea,
@@ -22,7 +23,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Spinner from '../common/Spinner'
 import Error from '../common/Error'
-import Popup from '../common/Popup'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,19 +39,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ProductSingle = ({ match, history }) => {
+const ProductSingle = ({ match, history, location }) => {
   const [qty, setQty] = useState(1)
   const dispatch = useDispatch()
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
-
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id))
   }, [dispatch, match])
 
   const addToCartHandler = () => {
-    history.push(`/cart/${match.params.id}?qty=${qty}`)
+    dispatch(
+      addToCart(match.params.id, qty)
+    )
+    // history.push(`/cart/${match.params.id}?qty=${qty}`)
+
     dispatch(openPopup)
     setTimeout(() => {
       dispatch(closePopup)
@@ -168,7 +171,7 @@ const ProductSingle = ({ match, history }) => {
           </Grid>
         </Grid>
       )}
-
+      {/* <CartDrawer /> */}
     </Container>
   )
 }

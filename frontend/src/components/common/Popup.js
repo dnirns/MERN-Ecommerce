@@ -1,17 +1,19 @@
 import { useDispatch } from 'react-redux'
 import { closePopup } from '../../actions/popupActions'
 import Snackbar from '@material-ui/core/Snackbar'
+import Fade from '@material-ui/core/Fade'
+import { makeStyles } from '@material-ui/styles'
 
-import IconButton from '@material-ui/core/Iconbutton'
-import CloseIcon from '@material-ui/icons/Close'
-import Slide from '@material-ui/core/Slide'
 
-const TransitionDown = (props) => {
-  return <Slide {...props} direction='down' />
-}
+const useStyle = makeStyles({
+  root: {
+    textAlign: 'center',
+  },
+})
 
 const Popup = ({ open }) => {
   const dispatch = useDispatch()
+  const classes = useStyle()
 
   const handleClose = () => {
     dispatch(closePopup)
@@ -20,28 +22,16 @@ const Popup = ({ open }) => {
   return (
     <div>
       <Snackbar
+        className={classes.root}
         anchorOrigin={{
           vertical: 'top',
           horizontal: 'center',
         }}
         open={open}
         onClose={handleClose}
-        TransitionComponent={TransitionDown}
+        TransitionComponent={Fade}
         message='item added to basket'
-        autoHideDuration={5000}
-        action={
-          <>
-            <IconButton
-              size='small'
-              aria-label='close'
-              color='inherit'
-              onClick={handleClose}
-            >
-              {' '}
-              <CloseIcon fontSize='small' />
-            </IconButton>
-          </>
-        }
+        autoHideDuration={4000}
       />
     </div>
   )

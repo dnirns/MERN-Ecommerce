@@ -5,24 +5,34 @@ const theme = createMuiTheme({
     icon: {
       cursor: 'pointer',
     },
-    MuiSnackbarContent: {
+    MuiSnackbar: {
       root: {
-        backgroundColor: '#28a745',
+        width: '100vw',
+        marginTop: '24px',
       },
     },
+    MuiSnackbarContent: {
+      root: {
+        backgroundColor: '#6a88e4',
+        width: '100%',
+        padding: '10px',
+        borderRadius: 'none',
+        justifyContent: 'center',
+      },
+      action: {
+        marginLeft: '0px',
+      },
+    },
+
     MuiCssBaseline: {
       '@global': {
         html: {},
-        a: {
-          // color: 'white'
-        },
+        a: {},
       },
     },
   },
   typography: {
-    h2: {
-      // color: 'pink'
-    },
+    h2: {},
   },
   palette: {
     primary: {

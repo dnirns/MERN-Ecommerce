@@ -1,21 +1,15 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
-import SideSheet from '../nav/NavDrawer'
-import Popup from '../common/Popup'
-
-
+import CartDrawer from '../nav/CartDrawer'
 
 const Home = () => {
-
-
   return (
     <>
-      <SideSheet />
       <Typography variant='h2'>Home</Typography>
       <Typography variant='caption'>
         Featured products carousel gallery here...
       </Typography>
-      <Popup/>
+      <CartDrawer />
     </>
   )
 }
