@@ -5,7 +5,7 @@ import {
   productListReducer,
   productDetailsReducer,
 } from './reducers/productReducers'
-import { cartReducer } from './reducers/cartReducer'
+import { cartReducer, cartOpenReducer } from './reducers/cartReducer'
 import { navReducer } from './reducers/navReducer'
 import { popupReducer } from './reducers/popupReducer'
 
@@ -13,6 +13,7 @@ const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
+  cartOpen: cartOpenReducer,
   nav: navReducer,
   popup: popupReducer
 })

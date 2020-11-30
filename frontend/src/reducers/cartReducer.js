@@ -2,6 +2,8 @@ import {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
   CART_SAVE_SHIPPING_ADDRESS,
+  CART_OPEN,
+  CART_CLOSED,
 } from '../constants/cartConstants'
 
 export const cartReducer = (
@@ -38,6 +40,17 @@ export const cartReducer = (
         ...state,
         shippingAddress: action.payload,
       }
+    default:
+      return state
+  }
+}
+
+export const cartOpenReducer = (state = { cartOpen: false }, action) => {
+  switch (action.type) {
+    case CART_OPEN:
+      return { cartOpen: true }
+    case CART_CLOSED:
+      return { cartOpen: false }
     default:
       return state
   }

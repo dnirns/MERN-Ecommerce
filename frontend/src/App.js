@@ -8,6 +8,7 @@ import NavBar from './components/nav/NavBar'
 import ProductList from './components/screens/ProductList'
 import ProductSingle from './components/screens/ProductSingle'
 import Cart from './components/screens/Cart'
+import CartDrawer from './components/screens/CartDrawer'
 import Shipping from './components/screens/Shipping'
 import Payment from './components/screens/Payment'
 import NavDrawer from './components/nav/NavDrawer'
@@ -18,12 +19,13 @@ import { useSelector } from 'react-redux'
 const App = () => {
   const nav = useSelector((state) => state.nav.navOpen)
   const popup = useSelector((state) => state.popup.popupOpen)
+  const cart = useSelector((state) => state.cartOpen.cartOpen)
 
   return (
     <Router>
       <NavBar />
       <NavDrawer open={nav} />
-
+      <CartDrawer open={cart}/>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Container maxWidth='lg'>

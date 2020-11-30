@@ -15,6 +15,7 @@ import {
   SwipeableDrawer,
   Box,
   Badge,
+  Typography,
 } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import LocalMallIcon from '@material-ui/icons/LocalMall'
@@ -23,8 +24,12 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import { Link } from 'react-router-dom'
 
 import { addToCart, removeFromCart } from '../../actions/cartActions'
-
+import { closeCart } from '../../actions/cartActions'
 const useStyles = makeStyles({
+  root: {
+    justifyContent: 'center',
+    paddingRight: '20px',
+  },
   closeBox: {
     borderColor: 'rgba(0, 0, 0, 0.12)',
     width: '56px',
@@ -35,11 +40,22 @@ const useStyles = makeStyles({
     padding: '10px',
   },
   list: {
-    width: '50vw',
+    width: '40vw',
+    minWidth: '320px',
+  },
+  cartItem: {
+    width: '150px',
+    padding: '10px',
+  },
+  checkout: {
+    display: 'flex',
+    justifyContent: 'center',
+    margin: '20px',
+    borderRadius: '0px',
   },
 })
 
-const CartDrawer = ({history}) => {
+const CartDrawer = ({ open }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
@@ -47,10 +63,6 @@ const CartDrawer = ({history}) => {
 
   const removeItem = (id) => {
     dispatch(removeFromCart(id))
-  }
-
-  const checkOut = () => {
-    history.push('/shipping')
   }
 
   const totalItems = cartItems.reduce(
@@ -62,26 +74,29 @@ const CartDrawer = ({history}) => {
     (accumilator, item) => accumilator + item.qty * item.price,
     0
   )
-  const tax = subTotal * 0.2
-  const totalWithTax = subTotal + tax
+
+  const handleClose = () => {
+    dispatch(closeCart)
+  }
 
   return (
-    <div>
+    <>
       <SwipeableDrawer
         anchor='left'
-        open={true}
+        open={open}
         variant='temporary'
-        // onClose={handleClose}
+        onClose={handleClose}
       >
         <Box display='flex' flexDirection='row'>
           <Button>
-            <CloseIcon />
+            <CloseIcon onClick={handleClose} />
           </Button>
+
           <Divider orientation='vertical' flexItem />
-          <Box>
+          <Box className={classes.cartBox}>
             <Link to='/cart'>
               <Button>
-                <Badge color='primary'>
+                <Badge badgeContent={totalItems} color='primary'>
                   <LocalMallIcon />
                 </Badge>
               </Button>
@@ -89,16 +104,17 @@ const CartDrawer = ({history}) => {
           </Box>
         </Box>
         <Divider />
+
         <List className={classes.list}>
           {cartItems.map((item) => (
             <>
               <ListItem key={item.product}>
                 <ListItemText
                   className={classes.cartItem}
-                  primary={item.name.toUpperCase()}
+                  primary={item.name}
                 />
                 <div>
-                  <FormControl className={classes.cartItem}>
+                  <FormControl className={classes.root}>
                     <Select
                       onChange={(e) =>
                         dispatch(
@@ -132,10 +148,34 @@ const CartDrawer = ({history}) => {
               </ListItem>
               <Divider variant='middle' />
             </>
-          ))}
+          ))}{' '}
         </List>
+
+        <Box className={classes.checkout}>
+          <Typography variant='body1'>
+            <strong>{`Total: ${subTotal}`}</strong>
+          </Typography>
+        </Box>
+
+        <Box className={classes.checkout}>
+          {totalItems === 0 ? (
+            <Button variant='outlined' disabled className={classes.checkout}>
+              Add to cart
+            </Button>
+          ) : (
+            <Link to='/shipping' onClick={handleClose}>
+              <Button
+                variant='contained'
+                color='primary'
+                className={classes.checkout}
+              >
+                Continue to checkout
+              </Button>
+            </Link>
+          )}
+        </Box>
       </SwipeableDrawer>
-    </div>
+    </>
   )
 }
 

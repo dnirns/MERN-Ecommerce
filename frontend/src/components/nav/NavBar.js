@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { openDrawer } from '../../actions/navActions'
-
+import { openCart } from '../../actions/cartActions'
 import { Toolbar, AppBar, Box, IconButton } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import LocalMallIcon from '@material-ui/icons/LocalMall'
@@ -26,6 +26,9 @@ const NavBar = () => {
 
   const handleOpenDrawer = () => {
     dispatch(openDrawer)
+  }
+  const handleOpenCart = () => {
+    dispatch(openCart)
   }
   const cart = useSelector((state) => state.cart)
 
@@ -59,8 +62,8 @@ const NavBar = () => {
         </Box>
 
         <Box className={classes.icon}>
-          <Link to='/cart'>
-            <Button className={classes.menuLink}>
+          <Link>
+            <Button className={classes.menuLink} onClick={handleOpenCart}>
               <Badge badgeContent={totalItems} color='primary'>
                 <LocalMallIcon />
               </Badge>
