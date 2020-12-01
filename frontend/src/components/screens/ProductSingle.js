@@ -7,17 +7,15 @@ import { openPopup, closePopup } from '../../actions/popupActions'
 import {
   CardActionArea,
   CardMedia,
-  CardContent,
   MenuItem,
   FormControl,
   Select,
   Button,
-  InputLabel,
+  Divider,
   Grid,
-  List,
   ListItem,
-  Container,
   Box,
+  CardContent,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -25,18 +23,30 @@ import Spinner from '../common/Spinner'
 import Error from '../common/Error'
 
 const useStyles = makeStyles((theme) => ({
+  MuiBox: {
+    root: {},
+  },
   root: {
-    margin: '10px',
-    minWidth: '180px',
+    display: 'flex',
+    justifyContent: 'center',
+    padding: 0,
   },
   button: {
-    display: 'block',
-    marginTop: theme.spacing(2),
+    display: 'flex',
+    marginTop: 10,
+    borderRadius: 2,
   },
   formControl: {
     margin: theme.spacing(2),
-    minWidth: 120,
+    minWidth: 40,
   },
+  content: {
+    padding: 20,
+    margin: '0 auto',
+  },
+  price: {
+    color: 'grey'
+  }
 }))
 
 const ProductSingle = ({ match, history, location }) => {
@@ -50,11 +60,7 @@ const ProductSingle = ({ match, history, location }) => {
   }, [dispatch, match])
 
   const addToCartHandler = () => {
-    dispatch(
-      addToCart(match.params.id, qty)
-    )
-    // history.push(`/cart/${match.params.id}?qty=${qty}`)
-
+    dispatch(addToCart(match.params.id, qty))
     dispatch(openPopup)
     setTimeout(() => {
       dispatch(closePopup)
@@ -64,115 +70,101 @@ const ProductSingle = ({ match, history, location }) => {
   const classes = useStyles()
 
   return (
-    <Container>
+    <div className={classes.root}>
       {loading ? (
         <Spinner />
       ) : error ? (
         <Error />
       ) : (
-        <Grid container spacing={3} justify='center'>
-          <Grid item md={1}>
-            <Link to='/products'>
-              <Button variant='contained' color='primary'>
-                Back
-              </Button>
-            </Link>
-          </Grid>
-
-          <Grid item xs={10} md={4}>
-            <Box variant='outlinded'>
+        <Grid container justify='space-evenly'>
+          <Grid item xs={12} sm={12} md={5}>
+            <Box>
               <CardActionArea>
                 <CardMedia component='img' image={product.image} />
               </CardActionArea>
             </Box>
           </Grid>
-          <Grid item xs={10} md={4}>
-            <List>
-              <ListItem>
-                <Typography variant='h4' component='h2'>
-                  {product.name}
-                </Typography>
-              </ListItem>
-              <ListItem>
-                <Typography variant='body' component='p'>
-                  {product.brand}
-                </Typography>
-              </ListItem>
-              <ListItem>
-                <Typography>£{product.price}</Typography>
-              </ListItem>
-              <ListItem>
+          <Grid item xs={12} sm={12} md={5}>
+            <Box className={classes.content}>
+              <CardContent>
+                <Box m={2}>
+                  <Typography variant='h5'>
+                    {product.name} <span className={classes.price}>£{product.price}</span>
+                  </Typography>
+                </Box>
+
+
+                <Divider />
+                <Box m={2}>
+                  <Typography variant='p'>
+                    {product.stock > 0 ? 'In Stock' : 'Out of Stock'}
+                  </Typography>
+                </Box>
+                <Divider />
+                <>
+                  <FormControl className={classes.formControl}>
+                    <Select value={qty}>
+                      <MenuItem value={0}>0</MenuItem>
+                      {[...Array(product.stock).keys()].map((x) => (
+                        <MenuItem
+                          key={x + 1}
+                          value={x + 1}
+                          onClick={() => setQty(x + 1)}
+                        >
+                          {x + 1}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                </>
+                {product.countInStock > 0 && (
+                  <ListItem>
+                    <Typography>Quantity:</Typography>
+                    {[...Array(product.stock).keys()].map((x) => (
+                      <Typography key={x + 1} value={x + 1}>
+                        {x + 1}
+                      </Typography>
+                    ))}
+                  </ListItem>
+                )}
+                <>
+                  {product.stock === 0 ? (
+                    <Link>
+                      <Button
+                        variant='contained'
+                        color='primary'
+                        className={classes.button}
+                      >
+                        ADD TO CART
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Link onClick={addToCartHandler}>
+                      <Button
+                        variant='contained'
+                        color='primary'
+                        className={classes.button}
+                      >
+                        ADD TO CART
+                      </Button>
+                    </Link>
+                  )}
+                </>
+              </CardContent>
+            </Box>
+          </Grid>
+          <Grid>
+            <Box>
+              <ListItem className={classes.box}>
                 <Typography variant='body' component='p'>
                   {product.description}
                 </Typography>
               </ListItem>
-            </List>
-          </Grid>
-          <Grid item xs={10} md={2}>
-            <div className={classes.root}>
-              <CardContent>
-                <List>
-                  <ListItem>
-                    <Typography variant='body'>£{product.price}</Typography>
-                  </ListItem>
-
-                  <ListItem>
-                    <Typography></Typography>
-                    <Typography variant='body'>
-                      {product.stock > 0 ? 'In Stock' : 'Out of Stock'}
-                    </Typography>
-                  </ListItem>
-
-                  <div>
-                    <FormControl className={classes.formControl}>
-                      <InputLabel>Select Quantity</InputLabel>
-                      <Select value={qty}>
-                        <MenuItem value={0}>0</MenuItem>
-                        {[...Array(product.stock).keys()].map((x) => (
-                          <MenuItem
-                            key={x + 1}
-                            value={x + 1}
-                            onClick={() => setQty(x + 1)}
-                          >
-                            {x + 1}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                  </div>
-                  {product.countInStock > 0 && (
-                    <ListItem>
-                      <Typography>Quantity:</Typography>
-                      {[...Array(product.stock).keys()].map((x) => (
-                        <Typography key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </Typography>
-                      ))}
-                    </ListItem>
-                  )}
-                  <ListItem>
-                    {product.stock === 0 ? (
-                      <Button variant='outlined' disabled>
-                        Add to cart
-                      </Button>
-                    ) : (
-                      <Button
-                        variant='contained'
-                        color='primary'
-                        onClick={addToCartHandler}
-                      >
-                        Add to cart
-                      </Button>
-                    )}
-                  </ListItem>
-                </List>
-              </CardContent>
-            </div>
+            </Box>
           </Grid>
         </Grid>
       )}
-      {/* <CartDrawer /> */}
-    </Container>
+    </div>
   )
 }
 

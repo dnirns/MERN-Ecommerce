@@ -62,7 +62,7 @@ const NavBar = () => {
           <Box display={{ sm: 'block', md: 'none' }}>
             <div aria-haspopup='true' onClick={handleOpenDrawer}>
               <IconButton edge='start' color='inherit' aria-label='menu'>
-                <MenuIcon fontSize='large' />
+                <MenuIcon fontSize='medium' />
               </IconButton>
             </div>
           </Box>
@@ -79,7 +79,7 @@ const NavBar = () => {
             <Link>
               <Button className={classes.menuLink} onClick={handleOpenCart}>
                 <Badge badgeContent={totalItems} color='primary'>
-                  <LocalMallIcon />
+                  <LocalMallIcon fontSize='medium'/>
                 </Badge>
               </Button>
             </Link>

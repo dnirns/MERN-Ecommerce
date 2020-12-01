@@ -8,11 +8,13 @@ import Spinner from '../common/Spinner'
 import Error from '../common/Error'
 import Button from '@material-ui/core/Button'
 import Box from '@material-ui/core/Box'
+import Container from '@material-ui/core/Container'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     textAlign: 'center',
+
   },
 }))
 
@@ -33,7 +35,7 @@ const ProductList = () => {
   const [showInfo, setShowInfo] = useState(false)
 
   return (
-    <div className={classes.root}>
+    <Container className={classes.root}>
       {loading ? (
         <Spinner />
       ) : error ? (
@@ -48,14 +50,14 @@ const ProductList = () => {
 
           <Grid container justify='center' spacing={3}>
             {products.map((product) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={product._id}>
+              <Grid item xs={12} sm={6} md={4} lg={4} key={product._id}>
                 <ProductCard info={showInfo} product={product} />
               </Grid>
             ))}
           </Grid>
         </>
       )}
-    </div>
+    </Container>
   )
 }
 

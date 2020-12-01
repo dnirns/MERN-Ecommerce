@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button'
 import Badge from '@material-ui/core/Badge'
 
 import { closeDrawer } from '../../actions/navActions'
+import { openCart } from '../../actions/cartActions'
 
 const useStyles = makeStyles({
   closeBox: {
@@ -39,6 +40,10 @@ const SideSheet = ({ open }) => {
     0
   )
 
+  const handleCart = () => {
+    dispatch(closeDrawer)
+    dispatch(openCart)
+  }
   const handleClose = () => {
     dispatch(closeDrawer)
   }
@@ -57,8 +62,8 @@ const SideSheet = ({ open }) => {
           </Button>
           <Divider orientation='vertical' flexItem />
           <Box className={classes.cartBox}>
-            <Link to='/cart'>
-              <Button onClick={handleClose}>
+            <Link>
+              <Button onClick={handleCart}>
                 <Badge badgeContent={totalItems} color='primary'>
                   <LocalMallIcon />
                 </Badge>

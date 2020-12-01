@@ -7,7 +7,6 @@ import Home from './components/screens/Home'
 import NavBar from './components/nav/NavBar'
 import ProductList from './components/screens/ProductList'
 import ProductSingle from './components/screens/ProductSingle'
-import Cart from './components/screens/Cart'
 import CartDrawer from './components/screens/CartDrawer'
 import Shipping from './components/screens/Shipping'
 import Payment from './components/screens/Payment'
@@ -25,18 +24,18 @@ const App = () => {
     <Router>
       <NavBar />
       <NavDrawer open={nav} />
-      <CartDrawer open={cart}/>
+      <CartDrawer open={cart} />
+
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Container maxWidth='lg'>
-          <Popup open={popup} />
+        <Popup open={popup} />
+        <>
           <Route path='/' component={Home} exact />
           <Route path='/products' component={ProductList} />
           <Route path='/product/:id' component={ProductSingle} />
-          <Route path='/cart/:id?' component={Cart} />
           <Route path='/shipping' component={Shipping} />
           <Route path='/payment' component={Payment} />
-        </Container>
+        </>
       </ThemeProvider>
     </Router>
   )

@@ -16,6 +16,7 @@ import {
   Box,
   Badge,
   Typography,
+  Container,
 } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import LocalMallIcon from '@material-ui/icons/LocalMall'
@@ -40,8 +41,12 @@ const useStyles = makeStyles({
     padding: '10px',
   },
   list: {
-    width: '40vw',
+    width: '100vw',
     minWidth: '320px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
   },
   cartItem: {
     width: '150px',
@@ -51,7 +56,6 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     margin: '20px',
-    borderRadius: '0px',
   },
 })
 
@@ -158,9 +162,14 @@ const CartDrawer = ({ open }) => {
         </Box>
 
         <Box className={classes.checkout}>
+          <Link to='/shipping' onClick={handleClose}>
+            <Button variant='outlined' className={classes.checkout}>
+              Continue shopping
+            </Button>
+          </Link>
           {totalItems === 0 ? (
             <Button variant='outlined' disabled className={classes.checkout}>
-              Add to cart
+              Go to Shipping
             </Button>
           ) : (
             <Link to='/shipping' onClick={handleClose}>
@@ -169,7 +178,7 @@ const CartDrawer = ({ open }) => {
                 color='primary'
                 className={classes.checkout}
               >
-                Continue to checkout
+                Go to Shipping
               </Button>
             </Link>
           )}

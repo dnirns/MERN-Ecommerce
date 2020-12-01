@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/styles'
 const useStyle = makeStyles({
   root: {
     textAlign: 'center',
+    top: '0px',
   },
 })
 
@@ -31,7 +32,7 @@ const Popup = ({ open }) => {
         onClose={handleClose}
         TransitionComponent={Fade}
         message='item added to basket'
-        autoHideDuration={4000}
+        autoHideDuration={3000}
       />
     </div>
   )
