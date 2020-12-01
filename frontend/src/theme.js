@@ -7,7 +7,7 @@ const theme = createMuiTheme({
     },
     MuiAutocomplete: {
       clearIndicator: {
-        display: 'none',
+        // display: 'none',
       },
     },
 

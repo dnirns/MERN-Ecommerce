@@ -7,7 +7,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 import countries from '../../data/countries'
 
 const AutocompleteCountries = () => {
-  const [value, setValue] = useState(countries[0])
+  const [value, setValue] = useState('')
 
   const dispatch = useDispatch()
 
@@ -34,9 +34,9 @@ const AutocompleteCountries = () => {
           selectionHandler(newValue.label)
         }}
         disableClearable
-        id='country-select-demo'
+        defaultValue=''
+        id='country'
         options={countries}
-        autoHighlight
         getOptionSelected={(x) => x.label}
         getOptionLabel={(option) => option.label}
         renderOption={(option) => (

@@ -5,12 +5,10 @@
 ## Stack / Dependencies:
 
 - React
+- Redux
+- Material UI
 - Express
 - MongoDB
 - Mongoose
 - Dotenv
 - Axios
-
-- React Bootstrap
-- Fort Awesome
-- React-Cool-OnClickOutside

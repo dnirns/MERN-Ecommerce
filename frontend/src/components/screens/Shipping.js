@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Shipping = ({ history }) => {
   const cart = useSelector((state) => state.cart)
-  const { shippingAddress } = cart
   const country = useSelector((state) => state.cart.shippingAddress.country)
+  const { shippingAddress } = cart
   const [name, setName] = useState(shippingAddress.name)
   const [number, setNumber] = useState(shippingAddress.number)
   const [street, setStreet] = useState(shippingAddress.street)
@@ -105,7 +105,7 @@ const Shipping = ({ history }) => {
                   color='primary'
                   onClick={sumbitAddressHandler}
                   disabled={
-                    !name || !number || !street || !city || !county || !postcode
+                    !name || !number || !street || !city || !county || !postcode || !country
                       ? true
                       : false
                   }
