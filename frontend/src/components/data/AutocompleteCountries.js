@@ -7,7 +7,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 import countries from '../../data/countries'
 
 const AutocompleteCountries = () => {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState(countries[0])
 
   const dispatch = useDispatch()
 

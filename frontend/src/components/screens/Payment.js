@@ -19,12 +19,16 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(1),
     margin: theme.spacing(2),
-    minWidth: '350px',
+    minWidth: 280,
     justifyContent: 'center',
   },
 }))
 const Payment = () => {
   const classes = useStyles()
+
+  const [date, setDate] = useState(new Date().toLocaleDateString('en-CA'))
+
+  console.log(date)
 
   return (
     <>
@@ -38,44 +42,26 @@ const Payment = () => {
                   <TextField
                     id='standard-helperText'
                     label='Name'
-                    // value={}
-                    // onChange={(e) => setName(e.target.value)}
                     required='true'
                   />
                   <TextField
                     id='standard-helperText'
                     label='Card Number'
-                    type='number'
-                    // value={number}
-                    // onChange={(e) => setNumber(e.target.value)}
+                    type='password'
                     required='true'
                   />
                   <TextField
                     id='standard-helperText'
-                    label='Street name'
-                    // value={street}
-                    // onChange={(e) => setStreet(e.target.value)}
+                    label='CVV'
+                    type='password'
                     required='true'
                   />
                   <TextField
                     id='standard-helperText'
-                    label='City'
-                    // value={city}
-                    // onChange={(e) => setCity(e.target.value)}
-                    required='true'
-                  />
-                  <TextField
-                    id='standard-helperText'
-                    label='County'
-                    // value={county}
-                    // onChange={(e) => setCounty(e.target.value)}
-                    required='true'
-                  />
-                  <TextField
-                    id='standard-helperText'
-                    label='Postcode'
-                    // value={postcode}
-                    // onChange={(e) => setPostcode(e.target.value)}
+                    label='Expiry'
+                    type='date'
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
                     required='true'
                   />
                 </FormGroup>
@@ -84,11 +70,10 @@ const Payment = () => {
                 <Button
                   variant='contained'
                   color='primary'
-                  // onClick={sumbitAddressHandler}
                   disabled={false}
                 >
                   <Box mr={1}>
-                    <LockIcon fontSize='small'/>
+                    <LockIcon fontSize='small' />
                   </Box>
                   Submit Payment
                 </Button>

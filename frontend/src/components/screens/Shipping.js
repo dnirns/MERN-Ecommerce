@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(1),
     margin: theme.spacing(2),
-    minWidth: '350px',
+    minWidth: 280,
     justifyContent: 'center',
   },
 }))
