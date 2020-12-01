@@ -2,13 +2,16 @@ import { createMuiTheme } from '@material-ui/core/styles'
 
 const theme = createMuiTheme({
   overrides: {
-
     icon: {
       cursor: 'pointer',
     },
-
-    MuiSnackbar: {
+    MuiAutocomplete: {
+      clearIndicator: {
+        display: 'none',
+      },
     },
+
+    MuiSnackbar: {},
     MuiSnackbarContent: {
       root: {
         backgroundColor: '#6a88e4',

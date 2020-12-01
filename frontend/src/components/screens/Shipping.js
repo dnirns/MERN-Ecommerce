@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import Breadcrumbs from '../common/Breadcrumbs'
+import AutocompleteCountries from '../data/AutocompleteCountries'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 const Shipping = ({ history }) => {
   const cart = useSelector((state) => state.cart)
   const { shippingAddress } = cart
-
+  const country = useSelector((state) => state.cart.shippingAddress.country)
   const [name, setName] = useState(shippingAddress.name)
   const [number, setNumber] = useState(shippingAddress.number)
   const [street, setStreet] = useState(shippingAddress.street)
@@ -38,7 +39,7 @@ const Shipping = ({ history }) => {
 
   const sumbitAddressHandler = () => {
     dispatch(
-      saveShippingAddress({ name, number, street, city, county, postcode })
+      saveShippingAddress({ name, number, street, city, county, postcode, country })
     )
     history.push('/payment')
   }
@@ -95,6 +96,7 @@ const Shipping = ({ history }) => {
                     onChange={(e) => setPostcode(e.target.value)}
                     required='true'
                   />
+                  <AutocompleteCountries/>
                 </FormGroup>
               </form>
               <Box display='flex' justifyContent='center'>
