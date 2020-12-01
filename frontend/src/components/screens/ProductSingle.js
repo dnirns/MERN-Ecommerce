@@ -16,6 +16,7 @@ import {
   ListItem,
   Box,
   CardContent,
+  Container,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -23,9 +24,6 @@ import Spinner from '../common/Spinner'
 import Error from '../common/Error'
 
 const useStyles = makeStyles((theme) => ({
-  MuiBox: {
-    root: {},
-  },
   root: {
     display: 'flex',
     justifyContent: 'center',
@@ -45,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 auto',
   },
   price: {
-    color: 'grey'
-  }
+    color: 'grey',
+  },
 }))
 
 const ProductSingle = ({ match, history, location }) => {
@@ -76,27 +74,27 @@ const ProductSingle = ({ match, history, location }) => {
       ) : error ? (
         <Error />
       ) : (
-        <Grid container justify='space-evenly'>
-          <Grid item xs={12} sm={12} md={5}>
+        <Grid container justify='center'>
+          <Grid item xs={12} sm={12} md={5} lg={5}>
             <Box>
               <CardActionArea>
                 <CardMedia component='img' image={product.image} />
               </CardActionArea>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={12} md={5}>
+          <Grid item xs={12} sm={12} md={5} lg={5}>
             <Box className={classes.content}>
               <CardContent>
                 <Box m={2}>
                   <Typography variant='h5'>
-                    {product.name} <span className={classes.price}>£{product.price}</span>
+                    {product.name}{' '}
+                    <span className={classes.price}>£{product.price}</span>
                   </Typography>
                 </Box>
 
-
                 <Divider />
                 <Box m={2}>
-                  <Typography variant='p'>
+                  <Typography variant='subtitle1'>
                     {product.stock > 0 ? 'In Stock' : 'Out of Stock'}
                   </Typography>
                 </Box>
@@ -156,9 +154,18 @@ const ProductSingle = ({ match, history, location }) => {
           <Grid>
             <Box>
               <ListItem className={classes.box}>
-                <Typography variant='body' component='p'>
-                  {product.description}
-                </Typography>
+                <Container maxWidth='md'>
+                  <Box my={3} py={2} mx={2}>
+                    <Box pb={3}>
+                      <Typography variant='h5'>Product Details:</Typography>
+                      <Divider/>
+                    </Box>
+
+                    <Typography variant='body2'>
+                      {product.description}
+                    </Typography>
+                  </Box>
+                </Container>
               </ListItem>
             </Box>
           </Grid>

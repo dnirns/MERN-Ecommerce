@@ -1,8 +1,9 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
+import Box from '@material-ui/core/Box'
 import theme from './theme'
-import Container from '@material-ui/core/Container'
+import Footer from './components/common/Footer'
 import Home from './components/screens/Home'
 import NavBar from './components/nav/NavBar'
 import ProductList from './components/screens/ProductList'
@@ -22,20 +23,22 @@ const App = () => {
 
   return (
     <Router>
-      <NavBar />
       <NavDrawer open={nav} />
       <CartDrawer open={cart} />
-
+      <NavBar />
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Popup open={popup} />
-        <>
+        <Box minHeight='90vh'>
+
           <Route path='/' component={Home} exact />
           <Route path='/products' component={ProductList} />
           <Route path='/product/:id' component={ProductSingle} />
           <Route path='/shipping' component={Shipping} />
           <Route path='/payment' component={Payment} />
-        </>
+
+        </Box>
+        <Footer />
       </ThemeProvider>
     </Router>
   )
