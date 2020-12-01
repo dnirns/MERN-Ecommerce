@@ -29,7 +29,7 @@ const ProductCard = ({ product, info }) => {
         {info && (
           <CardContent>
             <Typography variant='body1'>{product.name.toUpperCase()}</Typography>
-            <Typography variant='p'>Category: {product.category}</Typography>
+            <Typography variant='body2'>Category: {product.category}</Typography>
             <Typography variant='subtitle1'>£{product.price}</Typography>
           </CardContent>
         )}

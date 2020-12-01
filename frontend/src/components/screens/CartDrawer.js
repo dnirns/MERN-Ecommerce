@@ -162,11 +162,11 @@ const CartDrawer = ({ open }) => {
         </Box>
 
         <Box className={classes.checkout}>
-          <Link to='/shipping' onClick={handleClose}>
-            <Button variant='outlined' className={classes.checkout}>
+             
+            <Button variant='outlined' className={classes.checkout} onClick={handleClose}>
               Continue shopping
             </Button>
-          </Link>
+
           {totalItems === 0 ? (
             <Button variant='outlined' disabled className={classes.checkout}>
               Go to Shipping

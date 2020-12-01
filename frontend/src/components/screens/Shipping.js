@@ -8,6 +8,8 @@ import {
   Card,
   CardContent,
   Button,
+  Box,
+  Typography,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import Breadcrumbs from '../common/Breadcrumbs'
@@ -34,7 +36,7 @@ const Shipping = ({ history }) => {
 
   const dispatch = useDispatch()
 
-  const sumbitAddressHandler = (e) => {
+  const sumbitAddressHandler = () => {
     dispatch(
       saveShippingAddress({ name, number, street, city, county, postcode })
     )
@@ -45,55 +47,77 @@ const Shipping = ({ history }) => {
   return (
     <>
       <Breadcrumbs cart shipping current />
-      <Grid container direction='row' justify='center' alignItems='center'>
-        <Card p={2}>
-          <CardContent>
-            <form className={classes.root} noValidate autoComplete='off'>
-              <FormGroup>
-                <TextField
-                  id='standard-helperText'
-                  label='Name'
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <TextField
-                  id='standard-helperText'
-                  label='House number'
-                  value={number}
-                  onChange={(e) => setNumber(e.target.value)}
-                />
-                <TextField
-                  id='standard-helperText'
-                  label='Street name'
-                  value={street}
-                  onChange={(e) => setStreet(e.target.value)}
-                />
-                <TextField
-                  id='standard-helperText'
-                  label='City'
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                />
-                <TextField
-                  id='standard-helperText'
-                  label='County'
-                  value={county}
-                  onChange={(e) => setCounty(e.target.value)}
-                />
-                <TextField
-                  id='standard-helperText'
-                  label='Postcode'
-                  value={postcode}
-                  onChange={(e) => setPostcode(e.target.value)}
-                />
-              </FormGroup>
-            </form>
-          </CardContent>
-        </Card>
-        <Button variant='contained' color='primary' onClick={sumbitAddressHandler}>
-          Continue to payment
-        </Button>
-      </Grid>
+      <Box py={6}>
+        <Grid container direction='row' justify='center' alignItems='center'>
+          <Card p={2}>
+            <CardContent>
+              <form className={classes.root} noValidate autoComplete='off'>
+                <FormGroup>
+                  <TextField
+                    id='standard-helperText'
+                    label='Name'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required='true'
+                  />
+                  <TextField
+                    id='standard-helperText'
+                    label='House number'
+                    value={number}
+                    onChange={(e) => setNumber(e.target.value)}
+                    required='true'
+                  />
+                  <TextField
+                    id='standard-helperText'
+                    label='Street name'
+                    value={street}
+                    onChange={(e) => setStreet(e.target.value)}
+                    required='true'
+                  />
+                  <TextField
+                    id='standard-helperText'
+                    label='City'
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    required='true'
+                  />
+                  <TextField
+                    id='standard-helperText'
+                    label='County'
+                    value={county}
+                    onChange={(e) => setCounty(e.target.value)}
+                    required='true'
+                  />
+                  <TextField
+                    id='standard-helperText'
+                    label='Postcode'
+                    value={postcode}
+                    onChange={(e) => setPostcode(e.target.value)}
+                    required='true'
+                  />
+                </FormGroup>
+              </form>
+              <Box display='flex' justifyContent='center'>
+                <Button
+                  variant='contained'
+                  color='primary'
+                  onClick={sumbitAddressHandler}
+                  disabled={
+                    !name || !number || !street || !city || !county || !postcode
+                      ? true
+                      : false
+                  }
+                >
+                  Continue to payment
+                </Button>
+              </Box>
+              <Box mx={3} mt={3}>
+                <Typography variant='body2'>* required</Typography>
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Box>
     </>
   )
 }

@@ -30,13 +30,11 @@ const App = () => {
         <CssBaseline />
         <Popup open={popup} />
         <Box minHeight='90vh'>
-
           <Route path='/' component={Home} exact />
           <Route path='/products' component={ProductList} />
           <Route path='/product/:id' component={ProductSingle} />
           <Route path='/shipping' component={Shipping} />
           <Route path='/payment' component={Payment} />
-
         </Box>
         <Footer />
       </ThemeProvider>
