@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     display: 'flex',
     marginTop: 10,
-    borderRadius: 2,
+
   },
   formControl: {
     margin: theme.spacing(2),

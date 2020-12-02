@@ -77,6 +77,7 @@ const Payment = () => {
           <Button
             className={classes.button}
             variant='outlined'
+            disabled
           >
             <Box>
               <img

@@ -4,6 +4,7 @@ import {
   CART_SAVE_SHIPPING_ADDRESS,
   CART_OPEN,
   CART_CLOSED,
+  CART_EMPTY_ON_PURCHASE,
 } from '../constants/cartConstants'
 
 export const cartReducer = (
@@ -39,6 +40,11 @@ export const cartReducer = (
       return {
         ...state,
         shippingAddress: action.payload,
+      }
+    case CART_EMPTY_ON_PURCHASE:
+      return {
+        ...state,
+        cartItems: []
       }
     default:
       return state

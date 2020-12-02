@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { useDispatch} from 'react-redux'
+import { emptyCart } from '../../../actions/cartActions'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
 import {
   TextField,
@@ -18,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(1),
     margin: theme.spacing(1),
-    minWidth: 250,
+    minWidth: 280,
     justifyContent: 'center',
   },
   text: {
@@ -32,12 +35,19 @@ const CardForm = ({ cardNumber, cvv }) => {
   const [card, setCard] = useState('')
   const [anchorEl, setAnchorEl] = useState(null)
 
+  const dispatch = useDispatch()
+
   const handleDropdown = (e) => {
     setAnchorEl(e.currentTarget)
   }
 
   const handleCloseDropdown = () => {
     setAnchorEl(null)
+  }
+
+
+  const handleSubmit = () => {
+    dispatch(emptyCart)
   }
 
   const handleCardSelect = (cardChoice) => {
@@ -70,7 +80,7 @@ const CardForm = ({ cardNumber, cvv }) => {
                     aria-haspopup='true'
                     onClick={handleDropdown}
                   >
-                    Select Card Type
+                    Select Card Type *
                   </Button>
                   <Menu
                     id='simple-menu'
@@ -87,17 +97,20 @@ const CardForm = ({ cardNumber, cvv }) => {
                     </MenuItem>
                   </Menu>
                 </Box>
-                <TextField
-                  id='standard-helperText'
-                  label='Card Type'
-                  required='true'
-                  value={card}
-                  onChange={(e) => setName(e.target.value)}
-                />
+                {card && (
+                  <TextField
+                    disabled
+                    id='standard-helperText'
+                    required
+                    value={card}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                )}
+
                 <TextField
                   id='standard-helperText'
                   label='Name'
-                  required='true'
+                  required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -105,14 +118,14 @@ const CardForm = ({ cardNumber, cvv }) => {
                   disabled
                   id='standard-helperText'
                   label='Card Number'
-                  required='true'
+                  required
                   value={cardNumber}
                 />
                 <TextField
                   disabled
                   id='standard-helperText'
                   label='CVV'
-                  required='true'
+                  required
                   value={cvv}
                 />
                 <TextField
@@ -121,7 +134,7 @@ const CardForm = ({ cardNumber, cvv }) => {
                   type='date'
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  required='true'
+                  required
                 />
               </FormGroup>
             </form>
@@ -134,12 +147,14 @@ const CardForm = ({ cardNumber, cvv }) => {
                   Submit Payment
                 </Button>
               ) : (
-                <Button variant='contained' color='primary' disabled={false}>
-                  <Box mr={1}>
-                    <LockIcon fontSize='small' />
-                  </Box>
-                  Submit Payment
-                </Button>
+                <Link to='/confirmation'>
+                  <Button variant='contained' color='primary' disabled={false} onClick={handleSubmit}>
+                    <Box mr={1}>
+                      <LockIcon fontSize='small' />
+                    </Box>
+                    Submit Payment
+                  </Button>
+                </Link>
               )}
             </Box>
             <Box mx={3} mt={3}>

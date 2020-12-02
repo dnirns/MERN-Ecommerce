@@ -47,6 +47,9 @@ const useStyles = makeStyles({
     alignItems: 'center',
     textAlign: 'center',
   },
+  item: {
+    paddingRight: '0px',
+  },
   cartItem: {
     width: '150px',
     padding: '10px',
@@ -73,10 +76,9 @@ const CartDrawer = ({ open }) => {
     0
   )
 
-  const subTotal = cartItems.reduce(
-    (accumilator, item) => accumilator + item.qty * item.price,
-    0
-  )
+  const totalPrice = cartItems
+    .reduce((accumilator, item) => accumilator + item.qty * item.price, 0)
+    .toFixed(2)
 
   const handleClose = () => {
     dispatch(closeCart)
@@ -111,7 +113,7 @@ const CartDrawer = ({ open }) => {
         <List className={classes.list}>
           {cartItems.map((item) => (
             <>
-              <ListItem key={item.product}>
+              <ListItem key={item.product} className={classes.item}>
                 <ListItemText
                   className={classes.cartItem}
                   primary={item.name}
@@ -137,16 +139,18 @@ const CartDrawer = ({ open }) => {
                 <br />
                 <ListItemText
                   className={classes.cartItem}
-                  secondary={`Price: £${parseInt(item.price * item.qty)}`}
+                  secondary={`Price: £${(item.price * item.qty).toFixed(2)}`}
                 />
                 <ListItemSecondaryAction>
-                  <IconButton
-                    edge='end'
-                    aria-label='delete'
-                    onClick={() => removeItem(item.product)}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
+                  <Box mr={-2}>
+                    <IconButton
+                      edge='end'
+                      aria-label='delete'
+                      onClick={() => removeItem(item.product)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </Box>
                 </ListItemSecondaryAction>
               </ListItem>
               <Divider variant='middle' />
@@ -156,15 +160,18 @@ const CartDrawer = ({ open }) => {
 
         <Box className={classes.checkout}>
           <Typography variant='body1'>
-            <strong>{`Total: ${subTotal}`}</strong>
+            <strong>{`Total: £${totalPrice}`}</strong>
           </Typography>
         </Box>
 
         <Box className={classes.checkout}>
-
-            <Button variant='outlined' className={classes.checkout} onClick={handleClose}>
-              Continue shopping
-            </Button>
+          <Button
+            variant='outlined'
+            className={classes.checkout}
+            onClick={handleClose}
+          >
+            Continue shopping
+          </Button>
 
           {totalItems === 0 ? (
             <Button variant='outlined' disabled className={classes.checkout}>

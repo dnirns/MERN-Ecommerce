@@ -11,6 +11,7 @@ import ProductSingle from './components/screens/products/ProductSingle'
 import CartDrawer from './components/screens/checkout/CartDrawer'
 import Shipping from './components/screens/checkout/Shipping'
 import Payment from './components/screens/payment/Payment'
+import Confirmation from './components/screens/checkout/Confirmation'
 import NavDrawer from './components/nav/NavDrawer'
 import Popup from './components/common/Popup'
 
@@ -35,6 +36,7 @@ const App = () => {
           <Route path='/product/:id' component={ProductSingle} />
           <Route path='/shipping' component={Shipping} />
           <Route path='/payment' component={Payment} />
+          <Route path='/confirmation' component={Confirmation} />
         </Box>
         <Footer />
       </ThemeProvider>

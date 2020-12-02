@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS, CART_OPEN, CART_CLOSED } from '../constants/cartConstants'
+import { CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SAVE_SHIPPING_ADDRESS, CART_OPEN, CART_CLOSED, CART_EMPTY_ON_PURCHASE } from '../constants/cartConstants'
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/products/${id}`)
@@ -45,4 +45,15 @@ export const openCart = (dispatch) => {
 }
 export const closeCart = (dispatch) => {
   dispatch({ type: CART_CLOSED, payload: false})
+}
+
+
+export const emptyCart = (dispatch) => {
+  dispatch({
+    type: CART_EMPTY_ON_PURCHASE,
+    payload: {
+      cartItems: [],
+    }
+  })
+  localStorage.removeItem('cartItems')
 }
