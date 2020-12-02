@@ -10,7 +10,7 @@ import ProductList from './components/screens/ProductList'
 import ProductSingle from './components/screens/ProductSingle'
 import CartDrawer from './components/screens/CartDrawer'
 import Shipping from './components/screens/Shipping'
-import Payment from './components/screens/Payment'
+import Payment from './components/screens/payment/Payment'
 import NavDrawer from './components/nav/NavDrawer'
 import Popup from './components/common/Popup'
 
