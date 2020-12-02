@@ -2891,11 +2891,6 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap@^4.5.3:
-  version "4.5.3"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.5.3.tgz#c6a72b355aaf323920be800246a6e4ef30997fe6"
-  integrity sha512-o9ppKQioXGqhw8Z7mah6KdTYpNQY//tipnkxppWhPbiSWdD+1raYsnhwEZjkTHYbGee4cVQ0Rx65EhOY/HNLcQ==
-
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -5178,10 +5173,20 @@ follow-redirects@^1.0.0, follow-redirects@^1.10.0:
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.0.tgz#b42e8d93a2a7eea5ed88633676d6597bc8e384db"
   integrity sha512-aq6gF1BEKje4a9i9+5jimNFIpq4Q1WiwBToeRK5NvZBd/TRsmW8BsJfOEGkr76TbOyPVD3OVDN910EcUNtRYEA==
 
+fontsource-fira-sans@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/fontsource-fira-sans/-/fontsource-fira-sans-3.0.5.tgz#92362046d3e5a4787d674dc01977ff773684f3fc"
+  integrity sha512-LqowFtPxup23alt9yvrMe9IWs01ue3Jfbw63VJm+RPl+mUJQjnwzJZXNHwwZtL3jOheqvCwVy5CJwLVPR27g2g==
+
 fontsource-roboto@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/fontsource-roboto/-/fontsource-roboto-3.0.3.tgz#99c312babeabce22b3e933b3edf2951d4508f4f7"
   integrity sha512-kfsC9qAP6XhwnSDAhg2lhWeaUJfLGXZh7GcLxFiz/4lXdkV2pVhWv2Xp9ES3b3BHdc9UuPrWXXLOphzHIStcOw==
+
+fontsource-work-sans@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/fontsource-work-sans/-/fontsource-work-sans-3.0.3.tgz#7412e5340d2a6229d57a45914e7dbcfffdbff2b7"
+  integrity sha512-FzR66rxQslfPLYxJxAlUl3FLK26KrP4R6qrUtufHcMT8Bjgfc74F7Ii4hVv+VaMmLELufXRS+h78a+2kyyyoSg==
 
 for-in@^1.0.2:
   version "1.0.2"
@@ -9200,11 +9205,6 @@ react-app-polyfill@^2.0.0:
     raf "^3.4.1"
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
-
-react-cool-onclickoutside@^1.5.8:
-  version "1.5.8"
-  resolved "https://registry.yarnpkg.com/react-cool-onclickoutside/-/react-cool-onclickoutside-1.5.8.tgz#8b1c68c1bed69ff6875518f480ac17391770a9ec"
-  integrity sha512-Cpl4Yv6snFnXJGJfO2Gl3IEARf1rTAoowaePb6KfcQhTh6bFOf7AxH8jDX4eJmPZ47J5lnG2FihCniy0MPOmsQ==
 
 react-dev-utils@^11.0.1:
   version "11.0.1"

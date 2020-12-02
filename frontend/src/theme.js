@@ -5,12 +5,6 @@ const theme = createMuiTheme({
     icon: {
       cursor: 'pointer',
     },
-    MuiAutocomplete: {
-      clearIndicator: {
-        // display: 'none',
-      },
-    },
-
     MuiSnackbar: {},
     MuiSnackbarContent: {
       root: {
@@ -21,7 +15,6 @@ const theme = createMuiTheme({
         justifyContent: 'center',
       },
     },
-
     MuiCssBaseline: {
       '@global': {
         html: {},
@@ -30,7 +23,12 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    h2: {},
+    fontFamily: [
+      'Fira Sans',
+      'Helvetica Neue',
+      'Arial',
+      'sans-serif'
+    ].join(','),
   },
   palette: {
     primary: {

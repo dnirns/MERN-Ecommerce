@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { emptyCart } from '../../../actions/cartActions'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
@@ -44,7 +44,6 @@ const CardForm = ({ cardNumber, cvv }) => {
   const handleCloseDropdown = () => {
     setAnchorEl(null)
   }
-
 
   const handleSubmit = () => {
     dispatch(emptyCart)
@@ -148,7 +147,12 @@ const CardForm = ({ cardNumber, cvv }) => {
                 </Button>
               ) : (
                 <Link to='/confirmation'>
-                  <Button variant='contained' color='primary' disabled={false} onClick={handleSubmit}>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    disabled={false}
+                    onClick={handleSubmit}
+                  >
                     <Box mr={1}>
                       <LockIcon fontSize='small' />
                     </Box>

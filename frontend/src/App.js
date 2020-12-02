@@ -24,9 +24,9 @@ const App = () => {
 
   return (
     <Router>
+      <NavBar />
       <NavDrawer open={nav} />
       <CartDrawer open={cart} />
-      <NavBar />
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Popup open={popup} />
@@ -38,8 +38,8 @@ const App = () => {
           <Route path='/payment' component={Payment} />
           <Route path='/confirmation' component={Confirmation} />
         </Box>
-        <Footer />
       </ThemeProvider>
+      <Footer />
     </Router>
   )
 }

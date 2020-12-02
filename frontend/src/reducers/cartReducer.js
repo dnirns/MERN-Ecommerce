@@ -44,7 +44,7 @@ export const cartReducer = (
     case CART_EMPTY_ON_PURCHASE:
       return {
         ...state,
-        cartItems: []
+        cartItems: [],
       }
     default:
       return state
