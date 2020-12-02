@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { saveShippingAddress } from '../../actions/cartActions'
+import { saveShippingAddress } from '../../../actions/cartActions'
 import {
   TextField,
   FormGroup,
@@ -12,8 +12,8 @@ import {
   Typography,
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import Breadcrumbs from '../common/Breadcrumbs'
-import AutocompleteCountries from '../data/AutocompleteCountries'
+import Breadcrumbs from '../../common/Breadcrumbs'
+import AutocompleteCountries from '../../data/AutocompleteCountries'
 
 const useStyles = makeStyles((theme) => ({
   root: {

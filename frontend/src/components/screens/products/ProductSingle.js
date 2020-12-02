@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { listProductDetails } from '../../actions/productActions'
-import { addToCart } from '../../actions/cartActions'
-import { openPopup, closePopup } from '../../actions/popupActions'
+import { listProductDetails } from '../../../actions/productActions'
+import { addToCart } from '../../../actions/cartActions'
+import { openPopup, closePopup } from '../../../actions/popupActions'
 import {
   CardActionArea,
   CardMedia,
@@ -20,8 +20,8 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
-import Spinner from '../common/Spinner'
-import Error from '../common/Error'
+import Spinner from '../../common/Spinner'
+import Error from '../../common/Error'
 
 const useStyles = makeStyles((theme) => ({
   root: {

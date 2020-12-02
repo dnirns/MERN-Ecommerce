@@ -16,7 +16,6 @@ import {
   Box,
   Badge,
   Typography,
-  Container,
 } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import LocalMallIcon from '@material-ui/icons/LocalMall'
@@ -24,8 +23,8 @@ import DeleteIcon from '@material-ui/icons/Delete'
 
 import { Link } from 'react-router-dom'
 
-import { addToCart, removeFromCart } from '../../actions/cartActions'
-import { closeCart } from '../../actions/cartActions'
+import { addToCart, removeFromCart } from '../../../actions/cartActions'
+import { closeCart } from '../../../actions/cartActions'
 const useStyles = makeStyles({
   root: {
     justifyContent: 'center',
@@ -162,7 +161,7 @@ const CartDrawer = ({ open }) => {
         </Box>
 
         <Box className={classes.checkout}>
-             
+
             <Button variant='outlined' className={classes.checkout} onClick={handleClose}>
               Continue shopping
             </Button>

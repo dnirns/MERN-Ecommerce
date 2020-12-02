@@ -6,13 +6,12 @@ import { Box, Typography, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import Breadcrumbs from '../../common/Breadcrumbs'
 import CardForm from './CardForm'
-import PaypalForm from './PaypalForm'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(1),
     margin: theme.spacing(2),
-    minWidth: 280,
+    minWidth: 240,
     justifyContent: 'center',
   },
   box: {
@@ -21,16 +20,20 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   button: {
-    width: 130,
-    margin: 5,
+    width: 100,
+    height: 40,
+    margin: '0px 10px',
+    padding: '10px'
+  },
+  img: {
+    width: '70px',
   },
 }))
+
 const Payment = () => {
   const [paymentMethod, setPaymentMethod] = useState('')
   const [fakeCard, setFakeCard] = useState('')
   const [cvv, setCvv] = useState('')
-
-
 
   const handleCVV = () => {
     const num = () => {
@@ -48,16 +51,13 @@ const Payment = () => {
     handleCVV()
   }
 
-
-
-
   const classes = useStyles()
 
   return (
     <>
       <Breadcrumbs cart shipping payment current />
       <Box className={classes.box}>
-        <Box my={3}>
+        <Box my={2}>
           <Typography variant='h5'>Select Payment Method</Typography>
         </Box>
         <Box mb={3}>
@@ -66,18 +66,31 @@ const Payment = () => {
             variant='outlined'
             onClick={handleCard}
           >
-            Credit Card
+            <img
+              className={classes.img}
+              alt='Credit Card Logos'
+              title='Credit Card Logos'
+              src='http://www.credit-card-logos.com/images/visa_credit-card-logos/visa_mastercard_2.gif'
+              border='0'
+            />
           </Button>
           <Button
             className={classes.button}
             variant='outlined'
-            onClick={() => setPaymentMethod('paypal')}
           >
-            PayPal
+            <Box>
+              <img
+                className={classes.img}
+                src='https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png'
+                border='0'
+                alt='PayPal Logo'
+              />
+            </Box>
           </Button>
         </Box>
-        {paymentMethod === 'card' && <CardForm cardNumber={fakeCard} cvv={cvv}/>}
-        {paymentMethod === 'paypal' && <PaypalForm />}
+        {paymentMethod === 'card' && (
+          <CardForm cardNumber={fakeCard} cvv={cvv} />
+        )}
       </Box>
     </>
   )
