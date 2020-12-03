@@ -32,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
   button: {
     display: 'flex',
     marginTop: 10,
-
   },
   formControl: {
     margin: theme.spacing(2),
@@ -129,7 +128,8 @@ const ProductSingle = ({ match, history, location }) => {
                   {product.stock === 0 ? (
                     <Link>
                       <Button
-                        variant='contained'
+                        disabled
+                        variant='outlined'
                         color='primary'
                         className={classes.button}
                       >
@@ -139,7 +139,7 @@ const ProductSingle = ({ match, history, location }) => {
                   ) : (
                     <Link onClick={addToCartHandler}>
                       <Button
-                        variant='contained'
+                        variant='outlined'
                         color='primary'
                         className={classes.button}
                       >
@@ -158,7 +158,7 @@ const ProductSingle = ({ match, history, location }) => {
                   <Box my={3} py={2} mx={2}>
                     <Box pb={3}>
                       <Typography variant='h5'>Product Details:</Typography>
-                      <Divider/>
+                      <Divider />
                     </Box>
 
                     <Typography variant='body2'>

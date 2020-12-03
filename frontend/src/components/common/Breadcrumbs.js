@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 import Box from '@material-ui/core/Box'
+import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
 
@@ -29,9 +30,9 @@ const CheckoutBreadcrumbs = ({
         aria-label='breadcrumb'
       >
         {cart ? (
-          <Link color='inherit' onClick={() => dispatch(openCart)}>
-            Cart
-          </Link>
+
+            <Button color='secondary'>Cart</Button>
+
         ) : (
           <Typography className={classes.inactive}>Cart</Typography>
         )}

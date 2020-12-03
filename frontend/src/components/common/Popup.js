@@ -16,6 +16,7 @@ const SlideTransition = (props) => {
   return <Slide {...props} direction='down' />
 }
 
+
 const Popup = ({ open }) => {
   const dispatch = useDispatch()
   const classes = useStyle()
@@ -35,9 +36,13 @@ const Popup = ({ open }) => {
         open={open}
         onClose={handleClose}
         TransitionComponent={SlideTransition}
+        key={SlideTransition}
         message='Item added to basket'
-        autoHideDuration={2500}
-      />
+        autoHideDuration={1800}
+      >
+
+
+      </Snackbar>
     </div>
   )
 }

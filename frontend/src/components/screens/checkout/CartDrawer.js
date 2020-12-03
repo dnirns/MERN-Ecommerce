@@ -99,9 +99,9 @@ const CartDrawer = ({ open }) => {
 
           <Divider orientation='vertical' flexItem />
           <Box className={classes.cartBox}>
-            <Link to='/cart'>
+            <Link>
               <Button>
-                <Badge badgeContent={totalItems} color='primary'>
+                <Badge badgeContent={totalItems} color='secondary'>
                   <LocalMallIcon />
                 </Badge>
               </Button>
@@ -165,13 +165,16 @@ const CartDrawer = ({ open }) => {
         </Box>
 
         <Box className={classes.checkout}>
-          <Button
-            variant='outlined'
-            className={classes.checkout}
-            onClick={handleClose}
-          >
-            Continue shopping
-          </Button>
+          <Link to='/products'>
+            <Button
+              variant='outlined'
+              color='primary'
+              className={classes.checkout}
+              onClick={handleClose}
+            >
+              Continue shopping
+            </Button>
+          </Link>
 
           {totalItems === 0 ? (
             <Button variant='outlined' disabled className={classes.checkout}>
@@ -180,7 +183,7 @@ const CartDrawer = ({ open }) => {
           ) : (
             <Link to='/shipping' onClick={handleClose}>
               <Button
-                variant='contained'
+                variant='outlined'
                 color='primary'
                 className={classes.checkout}
               >

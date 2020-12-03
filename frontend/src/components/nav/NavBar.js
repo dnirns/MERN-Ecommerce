@@ -56,7 +56,6 @@ const NavBar = () => {
       <AppBar
         position='sticky'
         className={classes.root}
-        style={{ backgroundColor: '#1b1b1b' }}
       >
         <Toolbar variant='dense'>
           <Box display={{ sm: 'block', md: 'none' }}>
@@ -76,13 +75,11 @@ const NavBar = () => {
           </Box>
 
           <Box className={classes.icon}>
-            <Link>
               <Button className={classes.menuLink} onClick={handleOpenCart}>
-                <Badge badgeContent={totalItems} color='primary'>
+                <Badge badgeContent={totalItems} color='secondary'>
                   <LocalMallIcon fontSize='medium'/>
                 </Badge>
               </Button>
-            </Link>
           </Box>
         </Toolbar>
       </AppBar>

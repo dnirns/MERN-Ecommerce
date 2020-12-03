@@ -24,11 +24,11 @@ const App = () => {
 
   return (
     <Router>
-      <NavBar />
-      <NavDrawer open={nav} />
-      <CartDrawer open={cart} />
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <NavBar />
+        <NavDrawer open={nav} />
+        <CartDrawer open={cart} />
         <Popup open={popup} />
         <Box minHeight='90vh'>
           <Route path='/' component={Home} exact />

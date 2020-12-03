@@ -8,7 +8,7 @@ const theme = createMuiTheme({
     MuiSnackbar: {},
     MuiSnackbarContent: {
       root: {
-        backgroundColor: '#6a88e4',
+        backgroundColor: '#66bb6a',
         width: '100vw',
         padding: '10px',
         borderRadius: 'none',
@@ -23,23 +23,22 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: [
-      'Fira Sans',
-      'Helvetica Neue',
-      'Arial',
-      'sans-serif'
-    ].join(','),
+    fontFamily: ['Fira Sans', 'Helvetica Neue', 'Arial', 'sans-serif'].join(
+      ','
+    ),
   },
   palette: {
     primary: {
-      main: '#424242',
-      dark: '#1b1b1b',
-      light: '#6d6d6d',
+      light: '#484848',
+      main: '#212121',
+      dark: '#000000',
+      contrastText: '#ffffff',
     },
     secondary: {
-      main: '#6d6d6d',
-      dark: '#bcbcbc',
-      light: '#ffffff',
+      light: '#ffddc1',
+      main: '#ffab91',
+      dark: '#c97b63',
+      contrastText: '#f5f5f5',
     },
   },
 })
