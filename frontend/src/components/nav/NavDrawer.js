@@ -64,7 +64,7 @@ const SideSheet = ({ open }) => {
           <Box className={classes.cartBox}>
             <Link>
               <Button onClick={handleCart}>
-                <Badge badgeContent={totalItems} color='primary'>
+                <Badge badgeContent={totalItems} color='secondary'>
                   <LocalMallIcon />
                 </Badge>
               </Button>

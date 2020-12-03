@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     textAlign: 'center',
+    paddingTop: 20
 
   },
 }))

@@ -30,6 +30,7 @@ const App = () => {
         <NavDrawer open={nav} />
         <CartDrawer open={cart} />
         <Popup open={popup} />
+
         <Box minHeight='90vh'>
           <Route path='/' component={Home} exact />
           <Route path='/products' component={ProductList} />

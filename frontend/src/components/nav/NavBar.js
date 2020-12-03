@@ -23,9 +23,6 @@ const HideOnScroll = ({ children, window }) => {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    marginBottom: '40px',
-  },
   icon: {
     marginLeft: 'auto',
   },
@@ -53,10 +50,7 @@ const NavBar = () => {
 
   return (
     <HideOnScroll>
-      <AppBar
-        position='sticky'
-        className={classes.root}
-      >
+      <AppBar position='sticky'>
         <Toolbar variant='dense'>
           <Box display={{ sm: 'block', md: 'none' }}>
             <div aria-haspopup='true' onClick={handleOpenDrawer}>
@@ -75,11 +69,11 @@ const NavBar = () => {
           </Box>
 
           <Box className={classes.icon}>
-              <Button className={classes.menuLink} onClick={handleOpenCart}>
-                <Badge badgeContent={totalItems} color='secondary'>
-                  <LocalMallIcon fontSize='medium'/>
-                </Badge>
-              </Button>
+            <Button className={classes.menuLink} onClick={handleOpenCart}>
+              <Badge badgeContent={totalItems} color='secondary'>
+                <LocalMallIcon fontSize='medium' />
+              </Badge>
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>

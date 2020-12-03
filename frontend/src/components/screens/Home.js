@@ -1,14 +1,12 @@
 import React from 'react'
-import Typography from '@material-ui/core/Typography'
+import HomeCarousel from '../gallery/HomeCarousel'
+import Box from '@material-ui/core/Box'
 
 const Home = () => {
   return (
-    <>
-      <Typography variant='h2'>Home</Typography>
-      <Typography variant='caption'>
-        Featured products carousel gallery here...
-      </Typography>
-    </>
+
+      <HomeCarousel />
+
   )
 }
 

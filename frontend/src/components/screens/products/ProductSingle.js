@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     padding: 0,
+    paddingTop: 25
   },
   button: {
     display: 'flex',

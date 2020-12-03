@@ -50,7 +50,7 @@ const Confirmation = () => {
       </Grid>
       <Box textAlign='center'p={6}>
         <Link to='/'>
-          <Button variant='contained' color='primary'>Go Home</Button>
+          <Button variant='outlined' color='primary'>Go Home</Button>
         </Link>
       </Box>
     </Container>

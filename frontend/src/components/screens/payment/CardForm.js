@@ -166,8 +166,8 @@ const CardForm = ({ cardNumber, cvv }) => {
             </Box>
             <Box mx={3} mt={3}>
               <Typography variant='body2'>
-                ** this is a mock e-commerce site, example card no. has been
-                generated.
+                ** this is a mock e-commerce site, a fake card number<br/>has been
+                generated for illustrative purposes.
               </Typography>
             </Box>
           </CardContent>

@@ -48,7 +48,7 @@ const Shipping = ({ history }) => {
   return (
     <>
       <Breadcrumbs cart shipping current />
-      <Box py={6}>
+      <Box py={4}>
         <Grid container direction='row' justify='center' alignItems='center'>
           <Card p={2}>
             <CardContent>
@@ -101,7 +101,7 @@ const Shipping = ({ history }) => {
               </form>
               <Box display='flex' justifyContent='center'>
                 <Button
-                  variant='contained'
+                  variant='outlined'
                   color='primary'
                   onClick={sumbitAddressHandler}
                   disabled={

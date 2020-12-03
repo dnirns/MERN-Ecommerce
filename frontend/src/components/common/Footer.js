@@ -18,7 +18,7 @@ const Footer = () => {
     <>
       <Divider />
       <Container className={classes.root}>
-        <Typography variant='subtitle2'>Footer</Typography>
+        <Typography variant='caption'><em>A mock e-commerce project by Daniel Irons, these products are not really for sale, sorry.</em></Typography>
       </Container>
     </>
   )
