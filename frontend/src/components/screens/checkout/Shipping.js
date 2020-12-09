@@ -39,7 +39,15 @@ const Shipping = ({ history }) => {
 
   const sumbitAddressHandler = () => {
     dispatch(
-      saveShippingAddress({ name, number, street, city, county, postcode, country })
+      saveShippingAddress({
+        name,
+        number,
+        street,
+        city,
+        county,
+        postcode,
+        country,
+      })
     )
     history.push('/payment')
   }
@@ -48,7 +56,11 @@ const Shipping = ({ history }) => {
   return (
     <>
       <Breadcrumbs cart shipping current />
-      <Box py={4}>
+      <Box py={4} textAlign='center'>
+      <Box my={2} pb={2}>
+          <Typography variant='h5'>Enter shipping address:</Typography>
+        </Box>
+
         <Grid container direction='row' justify='center' alignItems='center'>
           <Card p={2}>
             <CardContent>
@@ -96,7 +108,7 @@ const Shipping = ({ history }) => {
                     onChange={(e) => setPostcode(e.target.value)}
                     required='true'
                   />
-                  <AutocompleteCountries/>
+                  <AutocompleteCountries />
                 </FormGroup>
               </form>
               <Box display='flex' justifyContent='center'>
@@ -105,7 +117,13 @@ const Shipping = ({ history }) => {
                   color='primary'
                   onClick={sumbitAddressHandler}
                   disabled={
-                    !name || !number || !street || !city || !county || !postcode || !country
+                    !name ||
+                    !number ||
+                    !street ||
+                    !city ||
+                    !county ||
+                    !postcode ||
+                    !country
                       ? true
                       : false
                   }

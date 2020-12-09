@@ -46,7 +46,7 @@ const Confirmation = () => {
           <span style={{ fontSize: '20px', opacity: '.6' }}>
             <em>(fake)</em>
           </span>{' '}
-          order {firstName}
+          order <strong>{firstName}</strong>
         </Typography>
       </Box>
       <Grid container justify='center' alignItems='center'>

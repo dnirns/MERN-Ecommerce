@@ -23,7 +23,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: ['Fira Sans', 'Helvetica Neue', 'Arial', 'sans-serif'].join(
+    fontFamily: ['Work Sans', 'Helvetica Neue', 'Arial', 'sans-serif'].join(
       ','
     ),
   },

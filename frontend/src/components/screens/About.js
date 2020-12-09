@@ -7,7 +7,7 @@ const About = () => {
   return (
     <Container maxWidth='lg'>
       <Box p={6} mt={3} textAlign='center'>
-        <Typography variant='h2'>About</Typography>
+        <Typography variant='h1' style={{fontFamily: 'Crimson Text', fontWeight: 700}}>about föt</Typography>
 
         <Box p={3}>
           <Typography variant='body1'>

@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { emptyCart } from '../../../actions/cartActions'
+
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
 import {
@@ -35,18 +34,12 @@ const CardForm = ({ cardNumber, cvv }) => {
   const [card, setCard] = useState('')
   const [anchorEl, setAnchorEl] = useState(null)
 
-  const dispatch = useDispatch()
-
   const handleDropdown = (e) => {
     setAnchorEl(e.currentTarget)
   }
 
   const handleCloseDropdown = () => {
     setAnchorEl(null)
-  }
-
-  const handleSubmit = () => {
-    dispatch(emptyCart)
   }
 
   const handleCardSelect = (cardChoice) => {
@@ -66,8 +59,8 @@ const CardForm = ({ cardNumber, cvv }) => {
       <Grid container direction='row' justify='center' alignItems='center'>
         <Card p={2}>
           <CardContent>
-            <Box textAlign='center'>
-              <Typography variant='h4'>Card Details</Typography>
+            <Box my={2} textAlign='center'>
+              <Typography variant='h5'>Card Details:</Typography>
             </Box>
             <form className={classes.root} noValidate autoComplete='off'>
               <FormGroup>
@@ -147,11 +140,7 @@ const CardForm = ({ cardNumber, cvv }) => {
                 </Button>
               ) : (
                 <Link to='/confirmation'>
-                  <Button
-                    variant='contained'
-                    color='primary'
-                    disabled={false}
-                  >
+                  <Button variant='contained' color='primary' disabled={false}>
                     <Box mr={1}>
                       <LockIcon fontSize='small' />
                     </Box>
@@ -165,8 +154,9 @@ const CardForm = ({ cardNumber, cvv }) => {
             </Box>
             <Box mx={3} mt={3}>
               <Typography variant='body2'>
-                ** this is a mock e-commerce site, a fake card number<br/>has been
-                generated for illustrative purposes.
+                ** this is a mock e-commerce site, a fake card number
+                <br />
+                has been generated for illustrative purposes.
               </Typography>
             </Box>
           </CardContent>

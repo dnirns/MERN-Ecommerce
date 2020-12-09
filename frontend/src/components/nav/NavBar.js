@@ -27,12 +27,13 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
   },
   menuLink: {
+    fontFamily: 'Work Sans',
     color: 'white',
+    textTransform: 'lowercase',
   },
 }))
 
 const NavBar = () => {
-
   const dispatch = useDispatch()
 
   const handleOpenDrawer = () => {
@@ -40,7 +41,6 @@ const NavBar = () => {
   }
   const handleOpenCart = () => {
     dispatch(openCart)
-
   }
 
   const cart = useSelector((state) => state.cart)
@@ -58,18 +58,18 @@ const NavBar = () => {
           <Box display={{ sm: 'block', md: 'none' }}>
             <div aria-haspopup='true' onClick={handleOpenDrawer}>
               <IconButton edge='start' color='inherit' aria-label='menu'>
-                <MenuIcon  />
+                <MenuIcon fontSize='medium' />
               </IconButton>
             </div>
           </Box>
           <Box display={{ xs: 'none', sm: 'none', md: 'block' }}>
-            <Link className={classes.menuLink} to='/'>
-              <Button className={classes.menuLink}>HOME</Button>
+            <Link to='/'>
+              <Button className={classes.menuLink}>Home</Button>
             </Link>
-            <Link className={classes.menuLink} to='/products'>
+            <Link to='/products'>
               <Button className={classes.menuLink}>PRODUCTS</Button>
             </Link>
-            <Link className={classes.menuLink} to='/about'>
+            <Link to='/about'>
               <Button className={classes.menuLink}>About</Button>
             </Link>
           </Box>

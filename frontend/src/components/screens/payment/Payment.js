@@ -57,8 +57,8 @@ const Payment = () => {
     <>
       <Breadcrumbs cart shipping payment current />
       <Box className={classes.box}>
-        <Box my={2}>
-          <Typography variant='h5'>Select Payment Method</Typography>
+        <Box my={2} pb={1}>
+          <Typography variant='h5'>Select Payment Method:</Typography>
         </Box>
         <Box mt={2} mb={3}>
           <Button
