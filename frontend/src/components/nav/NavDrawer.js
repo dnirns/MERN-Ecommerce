@@ -89,6 +89,14 @@ const SideSheet = ({ open }) => {
             </Link>
           </ListItem>
           <Divider />
+          <ListItem>
+            <Link to='/about'>
+              <Button>
+                <ListItemText primary='About' />
+              </Button>
+            </Link>
+          </ListItem>
+          <Divider />
         </List>
       </SwipeableDrawer>
     </>

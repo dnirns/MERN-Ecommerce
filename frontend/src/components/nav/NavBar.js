@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const NavBar = () => {
+
   const dispatch = useDispatch()
 
   const handleOpenDrawer = () => {
@@ -39,7 +40,9 @@ const NavBar = () => {
   }
   const handleOpenCart = () => {
     dispatch(openCart)
+
   }
+
   const cart = useSelector((state) => state.cart)
 
   const totalItems = cart.cartItems.reduce(
@@ -55,7 +58,7 @@ const NavBar = () => {
           <Box display={{ sm: 'block', md: 'none' }}>
             <div aria-haspopup='true' onClick={handleOpenDrawer}>
               <IconButton edge='start' color='inherit' aria-label='menu'>
-                <MenuIcon fontSize='medium' />
+                <MenuIcon  />
               </IconButton>
             </div>
           </Box>
@@ -65,6 +68,9 @@ const NavBar = () => {
             </Link>
             <Link className={classes.menuLink} to='/products'>
               <Button className={classes.menuLink}>PRODUCTS</Button>
+            </Link>
+            <Link className={classes.menuLink} to='/about'>
+              <Button className={classes.menuLink}>About</Button>
             </Link>
           </Box>
 

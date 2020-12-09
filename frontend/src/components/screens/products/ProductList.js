@@ -14,8 +14,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     textAlign: 'center',
-    paddingTop: 20
-
+    paddingTop: 20,
   },
 }))
 
@@ -23,8 +22,6 @@ const ProductList = () => {
   const dispatch = useDispatch()
 
   const productList = useSelector((state) => state.productList)
-
-
 
   const { loading, error, products } = productList
 
@@ -52,6 +49,7 @@ const ProductList = () => {
           <Grid container justify='center' spacing={3}>
             {products.map((product) => (
               <Grid item xs={12} sm={6} md={4} lg={4} key={product._id}>
+           
                 <ProductCard info={showInfo} product={product} />
               </Grid>
             ))}

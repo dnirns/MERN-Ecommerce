@@ -1,5 +1,3 @@
-import { useDispatch } from 'react-redux'
-import { openCart } from '../../actions/cartActions'
 import Typography from '@material-ui/core/Typography'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext'
@@ -22,7 +20,7 @@ const CheckoutBreadcrumbs = ({
   current,
 }) => {
   const classes = useStyle()
-  const dispatch = useDispatch()
+
   return (
     <Box mx={3} my={4}>
       <Breadcrumbs
@@ -30,9 +28,7 @@ const CheckoutBreadcrumbs = ({
         aria-label='breadcrumb'
       >
         {cart ? (
-
-            <Button color='secondary'>Cart</Button>
-
+          <Button color='secondary'>Cart</Button>
         ) : (
           <Typography className={classes.inactive}>Cart</Typography>
         )}

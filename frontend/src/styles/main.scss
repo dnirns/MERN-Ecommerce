@@ -1,5 +1,5 @@
 @import 'colors';
-
+@import 'heroImages';
 html {
   min-height: 100vh;
 }
@@ -17,22 +17,10 @@ a:visited {
   color: $secondary-main;
 }
 
-.carousel-container {
+.home-container {
   display: flex;
-  flex: 1;
-  height: 100vh;
-}
-.gallery-img {
-  display: flex;
-  flex: 1;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-}
-
-@media (max-width: 500px) {
-  .gallery-img {
-    height: 100vh;
-  }
+  flex-direction: column;
+  overflow: none;
+  height: 97vh;
+  background-color: white;
 }

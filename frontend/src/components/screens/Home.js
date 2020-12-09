@@ -1,12 +1,43 @@
-import React from 'react'
-import HomeCarousel from '../gallery/HomeCarousel'
-import Box from '@material-ui/core/Box'
+import React, { useState, useEffect } from 'react'
+// import Box from '@material-ui/core/Box'
+import Typography from '@material-ui/core/Typography'
+
+const heroImages = ['hero-image-1', 'hero-image-2', 'hero-image-3']
 
 const Home = () => {
+  const [hero, setHero] = useState(heroImages[0])
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  const handleHero = () => {
+    if (currentIndex === 0) {
+      setHero(heroImages[1])
+      setCurrentIndex(1)
+    }
+    if (currentIndex === 1) {
+      setHero(heroImages[2])
+      setCurrentIndex(2)
+    }
+    if (currentIndex === 2) {
+      setHero(heroImages[0])
+      setCurrentIndex(0)
+    }
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      handleHero()
+    }, 10000)
+  })
+
   return (
-
-      <HomeCarousel />
-
+    <div className='home-container'>
+      <div className='hero-text'>
+        <h1>WELCOME</h1>
+      </div>
+      <div className='hero-container'>
+        <div className={`hero ${hero}`}/>
+      </div>
+    </div>
   )
 }
 

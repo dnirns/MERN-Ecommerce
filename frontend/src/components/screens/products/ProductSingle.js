@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     padding: 0,
-    paddingTop: 25
+    paddingTop: 25,
   },
   button: {
     display: 'flex',
@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductSingle = ({ match, history, location }) => {
   const [qty, setQty] = useState(1)
+
   const dispatch = useDispatch()
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
@@ -75,7 +76,7 @@ const ProductSingle = ({ match, history, location }) => {
         <Error />
       ) : (
         <Grid container justify='center'>
-          <Grid item xs={12} sm={12} md={5} lg={5}>
+          <Grid item xs={11} sm={12} md={5} lg={5}>
             <Box>
               <CardActionArea>
                 <CardMedia component='img' image={product.image} />

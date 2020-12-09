@@ -7,9 +7,10 @@ import { makeStyles } from '@material-ui/styles'
 const useStyle = makeStyles({
   root: {
     display: 'flex',
-    padding: 10,
-    alignItems: 'flex-end',
+    padding: 5,
+    alignItems: 'center',
     justifyContent: 'center',
+    textAlign: 'center'
   },
 })
 const Footer = () => {

@@ -151,7 +151,6 @@ const CardForm = ({ cardNumber, cvv }) => {
                     variant='contained'
                     color='primary'
                     disabled={false}
-                    onClick={handleSubmit}
                   >
                     <Box mr={1}>
                       <LockIcon fontSize='small' />

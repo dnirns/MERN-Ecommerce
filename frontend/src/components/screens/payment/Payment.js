@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     width: 100,
     height: 40,
     margin: '0px 10px',
-    padding: '10px'
+    padding: '10px',
   },
   img: {
     width: '70px',
@@ -60,7 +60,7 @@ const Payment = () => {
         <Box my={2}>
           <Typography variant='h5'>Select Payment Method</Typography>
         </Box>
-        <Box mb={3}>
+        <Box mt={2} mb={3}>
           <Button
             className={classes.button}
             variant='outlined'
@@ -73,20 +73,6 @@ const Payment = () => {
               src='http://www.credit-card-logos.com/images/visa_credit-card-logos/visa_mastercard_2.gif'
               border='0'
             />
-          </Button>
-          <Button
-            className={classes.button}
-            variant='outlined'
-            disabled
-          >
-            <Box>
-              <img
-                className={classes.img}
-                src='https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png'
-                border='0'
-                alt='PayPal Logo'
-              />
-            </Box>
           </Button>
         </Box>
         {paymentMethod === 'card' && (

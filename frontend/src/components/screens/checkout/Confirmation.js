@@ -1,5 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { emptyCart } from '../../../actions/cartActions'
 import { Link } from 'react-router-dom'
 import {
   Box,
@@ -14,13 +15,20 @@ import OrderItems from './OrderItems'
 
 const Confirmation = () => {
   const cart = useSelector((state) => state.cart)
+
   const { shippingAddress } = cart
 
-  //? camel case first name to show in order confirmation
+  const dispatch = useDispatch()
+
+  //camel case first name for confirmation message
   const camelCaseFirstName = (name) => {
     const nameArr = name.split(' ')
     const first = nameArr[0]
     return first[0].toUpperCase() + first.substring(1)
+  }
+
+  const handleGoHome = () => {
+    dispatch(emptyCart)
   }
 
   const firstName = camelCaseFirstName(shippingAddress.name)
@@ -30,7 +38,7 @@ const Confirmation = () => {
       textAlign='center'
       justify='center'
       alignItems='center'
-      maxWidth='md'
+      maxWidth='lg'
     >
       <Box p={6} textAlign='center'>
         <Typography variant='h5'>
@@ -48,9 +56,11 @@ const Confirmation = () => {
           </CardContent>
         </Card>
       </Grid>
-      <Box textAlign='center'p={6}>
+      <Box textAlign='center' p={6}>
         <Link to='/'>
-          <Button variant='outlined' color='primary'>Go Home</Button>
+          <Button variant='outlined' color='primary' onClick={handleGoHome}>
+            Go Home
+          </Button>
         </Link>
       </Box>
     </Container>

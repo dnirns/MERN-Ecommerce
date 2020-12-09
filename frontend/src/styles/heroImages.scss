@@ -1,0 +1,57 @@
+.hero-container {
+  height: 100%;
+  background: black;
+}
+
+.hero {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  animation: fade 10s infinite;
+}
+
+.hero-text {
+  font-size: 3em;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  width: 100%;
+  height: 85%;
+}
+
+.hero-image-1 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5)),
+    url('../assets/gallery/jeans-2.jpg');
+  background-position: center;
+}
+
+.hero-image-2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5)),
+    url('../assets/gallery/model-1.jpeg');
+  background-position: top;
+}
+.hero-image-3 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.5)),
+    url('../assets/gallery/model-2.jpeg');
+  background-position: top;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
