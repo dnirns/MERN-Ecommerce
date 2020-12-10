@@ -1,7 +1,6 @@
 @import 'colors';
 @import 'hero';
 
-
 html {
   min-height: 100vh;
 }
@@ -22,7 +21,7 @@ a:visited {
 .home-container {
   display: flex;
   flex-direction: column;
-  overflow: none;
-  height: 97vh;
-  background-color: white;
+  justify-content: center;
+
+  height: 95vh;
 }

@@ -8,23 +8,23 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  animation: fade 10s infinite;
+  animation: fade 7s infinite;
 }
 
 .hero-text {
   font-family: 'Crimson Text';
   font-weight: 700;
-  font-size: 20vw;
-
+  font-size: 26vh;
   display: flex;
   position: absolute;
   justify-content: center;
   align-items: center;
   z-index: 1;
   text-align: center;
-  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.7);
   width: 100%;
   height: 70%;
+  padding-bottom: 100px;
 }
 
 .hero-image-1 {
@@ -56,5 +56,11 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-text {
+    font-size: 16vh;
   }
 }

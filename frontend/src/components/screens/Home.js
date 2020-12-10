@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(() => {
     setTimeout(() => {
       handleHero()
-    }, 10000)
+    }, 7000)
   })
 
   const handleHero = () => {
