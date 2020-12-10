@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const heroImages = ['hero-image-1', 'hero-image-2', 'hero-image-3']
+const heroImages = ['hero-image-2', 'hero-image-1', 'hero-image-3']
 
 const Home = () => {
   const [hero, setHero] = useState(heroImages[0])
