@@ -5205,16 +5205,6 @@ fontsource-crimson-text@^3.1.5:
   resolved "https://registry.yarnpkg.com/fontsource-crimson-text/-/fontsource-crimson-text-3.1.5.tgz#f6ca368f0cb9deb811f7338ea92a59c1755afead"
   integrity sha512-RzdwIplV9aGtOSlKTz9Hysv3w3xSAXppF+pp0Y3l+Yx/cK+U0t9oHREciELevQ5rWjtv/AIqGunc0sbmOapbWw==
 
-fontsource-fira-sans@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/fontsource-fira-sans/-/fontsource-fira-sans-3.0.5.tgz#92362046d3e5a4787d674dc01977ff773684f3fc"
-  integrity sha512-LqowFtPxup23alt9yvrMe9IWs01ue3Jfbw63VJm+RPl+mUJQjnwzJZXNHwwZtL3jOheqvCwVy5CJwLVPR27g2g==
-
-fontsource-roboto@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/fontsource-roboto/-/fontsource-roboto-3.0.3.tgz#99c312babeabce22b3e933b3edf2951d4508f4f7"
-  integrity sha512-kfsC9qAP6XhwnSDAhg2lhWeaUJfLGXZh7GcLxFiz/4lXdkV2pVhWv2Xp9ES3b3BHdc9UuPrWXXLOphzHIStcOw==
-
 fontsource-work-sans@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/fontsource-work-sans/-/fontsource-work-sans-3.0.3.tgz#7412e5340d2a6229d57a45914e7dbcfffdbff2b7"

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { listProductDetails } from '../../../actions/productActions'
 import { addToCart } from '../../../actions/cartActions'
+import { makeStyles } from '@material-ui/core/styles'
 import { openPopup, closePopup } from '../../../actions/popupActions'
 import {
   CardActionArea,
@@ -17,9 +18,9 @@ import {
   Box,
   CardContent,
   Container,
+  Typography,
 } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
+
 import Spinner from '../../common/Spinner'
 import Error from '../../common/Error'
 
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const ProductSingle = ({ match, history, location }) => {
+const ProductSingle = ({ match }) => {
   const [qty, setQty] = useState(1)
 
   const dispatch = useDispatch()
@@ -92,7 +93,6 @@ const ProductSingle = ({ match, history, location }) => {
                     <span className={classes.price}>£{product.price}</span>
                   </Typography>
                 </Box>
-
                 <Divider />
                 <Box m={2}>
                   <Typography variant='subtitle1'>
@@ -162,7 +162,6 @@ const ProductSingle = ({ match, history, location }) => {
                       <Typography variant='h5'>Product Details:</Typography>
                       <Divider />
                     </Box>
-
                     <Typography variant='body2'>
                       {product.description}
                     </Typography>

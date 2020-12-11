@@ -1,19 +1,23 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { makeStyles } from '@material-ui/core/styles'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import { Link } from 'react-router-dom'
-import List from '@material-ui/core/List'
-import Divider from '@material-ui/core/Divider'
-import ListItem from '@material-ui/core/ListItem'
-import Box from '@material-ui/core/Box'
-import ListItemText from '@material-ui/core/ListItemText'
-import CloseIcon from '@material-ui/icons/Close'
-import LocalMallIcon from '@material-ui/icons/LocalMall'
-import Button from '@material-ui/core/Button'
-import Badge from '@material-ui/core/Badge'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { closeDrawer } from '../../actions/navActions'
 import { openCart } from '../../actions/cartActions'
+import { makeStyles } from '@material-ui/core/styles'
+
+import {
+  List,
+  Divider,
+  ListItem,
+  Box,
+  ListItemText,
+  Button,
+  Badge,
+  SwipeableDrawer
+} from '@material-ui/core'
+
+import CloseIcon from '@material-ui/icons/Close'
+import LocalMallIcon from '@material-ui/icons/LocalMall'
 
 const useStyles = makeStyles({
   closeBox: {

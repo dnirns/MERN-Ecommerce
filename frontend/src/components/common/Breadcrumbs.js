@@ -1,10 +1,7 @@
-import Typography from '@material-ui/core/Typography'
-import Breadcrumbs from '@material-ui/core/Breadcrumbs'
-import NavigateNextIcon from '@material-ui/icons/NavigateNext'
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/styles'
+import { Typography, Breadcrumbs, Box, Button } from '@material-ui/core'
+import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 
 const useStyle = makeStyles({
   inactive: {
@@ -12,13 +9,7 @@ const useStyle = makeStyles({
   },
 })
 
-const CheckoutBreadcrumbs = ({
-  cart,
-  shipping,
-  payment,
-  complete,
-  current,
-}) => {
+const CheckoutBreadcrumbs = ({ cart, shipping, payment }) => {
   const classes = useStyle()
 
   return (

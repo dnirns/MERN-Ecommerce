@@ -1,7 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { emptyCart } from '../../../actions/cartActions'
-import { Link } from 'react-router-dom'
 import {
   Box,
   Typography,
@@ -20,8 +20,7 @@ const Confirmation = () => {
 
   const dispatch = useDispatch()
 
-  //camel case first name for confirmation message
-  const camelCaseFirstName = (name) => {
+  const capitaliseFirstLetter = (name) => {
     const nameArr = name.split(' ')
     const first = nameArr[0]
     return first[0].toUpperCase() + first.substring(1)
@@ -31,7 +30,7 @@ const Confirmation = () => {
     dispatch(emptyCart)
   }
 
-  const firstName = camelCaseFirstName(shippingAddress.name)
+  const firstName = capitaliseFirstLetter(shippingAddress.name)
 
   return (
     <Container

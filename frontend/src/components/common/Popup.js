@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { closePopup } from '../../actions/popupActions'
 import Snackbar from '@material-ui/core/Snackbar'
-
 import Slide from '@material-ui/core/Slide'
 import { makeStyles } from '@material-ui/styles'
 
@@ -15,7 +14,6 @@ const useStyle = makeStyles({
 const SlideTransition = (props) => {
   return <Slide {...props} direction='down' />
 }
-
 
 const Popup = ({ open }) => {
   const dispatch = useDispatch()
@@ -40,8 +38,6 @@ const Popup = ({ open }) => {
         message='Item added to basket'
         autoHideDuration={1800}
       >
-
-
       </Snackbar>
     </div>
   )

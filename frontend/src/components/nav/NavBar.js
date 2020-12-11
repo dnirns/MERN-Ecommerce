@@ -1,16 +1,20 @@
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { openDrawer } from '../../actions/navActions'
 import { openCart } from '../../actions/cartActions'
-import { Toolbar, AppBar, Box, IconButton, Slide } from '@material-ui/core'
+import {
+  Toolbar,
+  AppBar,
+  Box,
+  IconButton,
+  Slide,
+  Button,
+  Badge,
+  useScrollTrigger,
+} from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import LocalMallIcon from '@material-ui/icons/LocalMall'
-import Button from '@material-ui/core/Button'
-import Badge from '@material-ui/core/Badge'
 import { makeStyles } from '@material-ui/core/styles'
-import { Link } from 'react-router-dom'
-
-//hide on scroll
-import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 
 const HideOnScroll = ({ children, window }) => {
   const trigger = useScrollTrigger({ target: window ? window() : undefined })
@@ -22,7 +26,7 @@ const HideOnScroll = ({ children, window }) => {
   )
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   icon: {
     marginLeft: 'auto',
   },
@@ -31,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     textTransform: 'lowercase',
   },
-}))
+})
 
 const NavBar = () => {
   const dispatch = useDispatch()
